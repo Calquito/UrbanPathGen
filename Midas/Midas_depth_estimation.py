@@ -1,10 +1,13 @@
 import cv2
 import torch
-import urllib.request
 
 import matplotlib.pyplot as plt
 import sys
 import numpy as np
+import time
+
+# Start the timer
+start_time = time.time()
 
 
 #acepta np.array
@@ -71,7 +74,7 @@ def find_min_sum_submatrix(matrix, N):
 #url, filename = ("https://github.com/pytorch/hub/raw/master/images/dog.jpg", "dog.jpg")
 #urllib.request.urlretrieve(url, filename)
 
-filename= "Midas\\imagenes_de_prueba\\h.jpeg"
+filename= "Midas\\imagenes_de_prueba\\ss.jpeg"
 
 
 model_type = "DPT_Large"     # MiDaS v3 - Large     (highest accuracy, slowest inference speed)
@@ -193,11 +196,18 @@ print("distance: "+str(distance))
 
 angle=(distance/output.shape[1])*180
 
-print(angle)
+print("angle: "+str(angle))
+
+# Stop the timer
+end_time = time.time()
+
+# Calculate the elapsed time
+elapsed_time = end_time - start_time
+
+print("Elapsed time:", elapsed_time, "seconds")
 
 
-
-
+#show deepth analysis
 np.set_printoptions(threshold=sys.maxsize,suppress = True)
 cmap = plt.cm.jet
 plt.imshow(output,cmap=cmap)
@@ -212,5 +222,7 @@ plt.show()
 
 
 
-
+#que porcentaje de la imagen descartar?
+#o descartar por áreas contiguas
+#requeriría un análisis matricial complejo
 
