@@ -1,40 +1,33 @@
 from matrix_analysis import *
-from initialize_variables import *
+from show_depth_image import show_depth_image
+from scipy import ndimage
 
 
-def choose_angle(depth_estimation_matrix):
-
-    # Decision with angles based on area
+def choose_angle(depth_estimation_matrix,image_percentage,submatrices,vision_field_degrees):
 
     adjusted_matrix=remove_extra_columns(depth_estimation_matrix,submatrices)
 
     #start_row to sum it in case of needing the y coordinate
-    bounded_matrix, start_row = select_center_rows(adjusted_matrix,50)
+    bounded_matrix, start_row = select_center_rows(adjusted_matrix,image_percentage)
 
     #submatrix NxN dimension
     submatrix_dimension=bounded_matrix.shape[1]//submatrices
 
-    #get the coordinates of the first element of the deepest submatrix
-    min_row, min_col=find_min_sum_submatrix(bounded_matrix,submatrix_dimension)
-
     center_x = depth_estimation_matrix.shape[1] // 2
 
+    # Define the minimum size desired for the areas
+    min_size = bounded_matrix.size//submatrices
 
-    # Distance between points
-    distance = min_col - center_x 
+    # Get coordinates of the first element of all contiguous areas
+    middle_horizontal_coordinates = get_middle_horizontal_coordinates(bounded_matrix, min_size)
+    
+    angles = []
 
-    print("dpx: "+ str(min_col))
-    print("dpy: "+ str(min_row))
-    print("center: "+str(center_x))
+    for coordinate in middle_horizontal_coordinates:
+        distance = coordinate[1] - center_x 
+        angle=(distance/depth_estimation_matrix.shape[1])*vision_field_degrees
+        angles.append(angle)
 
-    print("distance: "+str(distance))
-
-    #angle, the center is the zero, negative angle is left, positive angle is right
-
-    angle=(distance/depth_estimation_matrix.shape[1])*180
-
-    print("angle: "+str(angle))
-
-    return angle
-
+        
+    return angles, bounded_matrix
 

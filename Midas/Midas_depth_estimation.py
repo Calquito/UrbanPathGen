@@ -3,19 +3,7 @@ import torch
 import numpy as np
 
 
-def estimate_depth(filename,model_type):
-    midas = torch.hub.load("intel-isl/MiDaS", model_type)
-
-    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-    midas.to(device)
-    midas.eval()
-
-    midas_transforms = torch.hub.load("intel-isl/MiDaS", "transforms")
-
-    if model_type == "DPT_Large" or model_type == "DPT_Hybrid":
-        transform = midas_transforms.dpt_transform
-    else:
-        transform = midas_transforms.small_transform
+def estimate_depth(filename,model_type,transform,device,midas):
 
     img = cv2.imread(filename)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

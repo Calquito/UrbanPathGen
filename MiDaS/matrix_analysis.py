@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import ndimage
 
 #acepts np.array
 def split_matrix_vertical(matriz):
@@ -58,3 +59,38 @@ def find_min_sum_submatrix(matrix, N):
                 min_row, min_col = i*N, j*N
     
     return min_row, min_col
+
+"""takes a binary array and a desired minimum size for the areas, 
+and returns a list of coordinates of the first element of each contiguous area that meets the minimum size. """
+def get_first_element_coordinates(binary_matrix, min_size):
+    labeled_components, num_components = ndimage.label(binary_matrix)
+    component_sizes = np.bincount(labeled_components.ravel())[1:]
+    filtered_areas = [i + 1 for i, size in enumerate(component_sizes) if size >= min_size]
+    
+    first_element_coordinates = []
+    for area in filtered_areas:
+        indices = np.where(labeled_components == area)
+        first_element = (indices[0][0], indices[1][0])  # Get coordinates of the first element
+        first_element_coordinates.append(first_element)
+    
+    return first_element_coordinates
+
+"""calculates the row index of the middle horizontal element by averaging 
+the minimum and maximum row indices of the area"""
+
+def get_middle_horizontal_coordinates(binary_matrix, min_size):
+    labeled_components, num_components = ndimage.label(binary_matrix)
+    component_sizes = np.bincount(labeled_components.ravel())[1:]
+    filtered_areas = [i + 1 for i, size in enumerate(component_sizes) if size >= min_size]
+    
+    middle_horizontal_coordinates = []
+    for area in filtered_areas:
+        indices = np.where(labeled_components == area)
+        min_row = min(indices[0])
+        max_row = max(indices[0])
+        middle_row = (min_row + max_row) // 2
+        middle_col = sum(indices[1]) // len(indices[1])  # Calculate the average x-coordinate
+        middle_element = (middle_row, middle_col)  # Get coordinates of the middle horizontal element
+        middle_horizontal_coordinates.append(middle_element)
+    
+    return middle_horizontal_coordinates
