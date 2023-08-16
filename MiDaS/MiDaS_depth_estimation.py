@@ -3,7 +3,7 @@ import torch
 import numpy as np
 
 
-def estimate_depth(filename,model_type,transform,device,midas):
+def estimate_depth(filename,transform,device,midas):
 
     img = cv2.imread(filename)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

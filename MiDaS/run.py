@@ -2,10 +2,8 @@ from initialize_variables import *
 from MiDaS_depth_estimation import estimate_depth
 from choose_angle import choose_angle
 from show_depth_image import show_depth_image
-from identify_routes import identify_routes
 from load_model import load_model
-from identify_routes import identify_routes
-
+from drone import Drone
 from scipy import ndimage
 import torch
 
@@ -20,11 +18,18 @@ def run():
     #load de MiDaS model to be used
     transform,device,midas=load_model(model_type)
 
+    # Create a list to store drones
+    drones = []
+
+    for i in range(num_drones):
+        drone = Drone(i, 30, 180)
+        drones.append(drone)
+
 
     #start_time = time.time()  # Register initial time
 
     #get depth_estimation_matrix
-    depth_estimation_matrix=estimate_depth(filename,model_type,transform,device,midas)
+    depth_estimation_matrix=estimate_depth(filename,transform,device,midas)
 
     
     """end_time = time.time()  # Registra el tiempo de finalización
@@ -41,14 +46,21 @@ def run():
     # Apply threshold
     depth_area = np.array((depth_tensor < threshold).float())
 
-    filtered_matrix=identify_routes(depth_area,depth_area.size//submatrices)
-
-    angles, bounded_matrix= choose_angle(filtered_matrix,image_percentage,submatrices,vision_field_degrees)
+    angles, bounded_matrix= choose_angle(depth_area,image_percentage,submatrices,vision_field_degrees)
 
     print("There are "+str(len(angles))+" posible routes, in the directions "+ str(angles))
 
+
+    for i in range(num_drones):
+        direction = angles[i % len(angles)]
+        drone = drones[i]
+        drone.turn(direction)
+
+    """
+    show_depth_image(depth_area)
     show_depth_image(bounded_matrix)
-    show_depth_image(depth_estimation_matrix)
+    show_depth_image(depth_estimation_matrix)"""
 
 
-run()
+if __name__ == "__main__":
+    run()

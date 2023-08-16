@@ -79,10 +79,12 @@ def get_first_element_coordinates(binary_matrix, min_size):
 the minimum and maximum row indices of the area"""
 
 def get_middle_horizontal_coordinates(binary_matrix, min_size):
+    #ignore areas of small size
     labeled_components, num_components = ndimage.label(binary_matrix)
     component_sizes = np.bincount(labeled_components.ravel())[1:]
     filtered_areas = [i + 1 for i, size in enumerate(component_sizes) if size >= min_size]
     
+    #get coordinates
     middle_horizontal_coordinates = []
     for area in filtered_areas:
         indices = np.where(labeled_components == area)
