@@ -3,10 +3,13 @@ from MiDaS_depth_estimation import estimate_depth
 from choose_angle import choose_angle
 from show_depth_image import show_depth_image
 from load_model import load_model
+from matrix_analysis import *
 from drone import Drone
+from generate_images import generate_merged_images
+from PIL import Image
+
 from scipy import ndimage
 import torch
-
 import time
 import numpy as np
 import torch.nn.functional as F
@@ -22,20 +25,14 @@ def run():
     drones = []
 
     for i in range(num_drones):
-        drone = Drone(i, 30, 180)
+        drone = Drone(i, 30, vision_field_degrees)
         drones.append(drone)
 
 
-    #start_time = time.time()  # Register initial time
+    start_time = time.time()  # Register initial time
 
     #get depth_estimation_matrix
-    depth_estimation_matrix=estimate_depth(filename,transform,device,midas)
-
-    
-    """end_time = time.time()  # Registra el tiempo de finalización
-    elapsed_time = end_time - start_time  # Calcula el tiempo transcurrido
-    print(f"Tiempo transcurrido: {elapsed_time} segundos")"""
-
+    depth_estimation_matrix=estimate_depth(original_image,transform,device,midas)
 
     # Convert numpy matrix to PyTorch tensor
     depth_tensor = torch.tensor(depth_estimation_matrix, dtype=torch.float32)
@@ -54,13 +51,14 @@ def run():
     for i in range(num_drones):
         direction = angles[i % len(angles)]
         drone = drones[i]
-        drone.turn(direction)
+        turning_instruction = drone.turn(direction)
 
-    """
-    show_depth_image(depth_area)
-    show_depth_image(bounded_matrix)
-    show_depth_image(depth_estimation_matrix)"""
+    end_time = time.time()  # Registra el tiempo de finalización
+    elapsed_time = end_time - start_time  # Calcula el tiempo transcurrido
+    print(f"Tiempo transcurrido: {elapsed_time} segundos")
+
+    generate_merged_images([np.array(Image.open(original_image)),depth_area,depth_estimation_matrix],"MiDaS/image_analysis/a.png")
 
 
 if __name__ == "__main__":
-    run()
+    run()s

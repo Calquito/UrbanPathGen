@@ -11,7 +11,7 @@ num_drones=3
 #################################################################
 
 #name of the image to read
-filename= "Midas\\imagenes_de_prueba\\3 doors.jpg"
+original_image= "Midas\\imagenes_de_prueba\\ff.jpeg"
 
 
 #number of submatrices
@@ -22,6 +22,8 @@ image_percentage=50
 
 #threshold fraction
 threshold_fraction=0.25
+
+frecuency_of_images=3
 
 #model_type = "DPT_Large"     # MiDaS v3 - Large     (highest accuracy, slowest inference speed)
 model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium inference speed)

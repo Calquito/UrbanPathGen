@@ -5,4 +5,6 @@ class Drone:
         self.id=id
 
     def turn(self, direction ):
-        print("Dron "+str(self.id)+" turning towards "+str(direction))
+        turning_instruction="Dron "+str(self.id)+" turning towards "+str(direction)
+        print(turning_instruction)
+        return turning_instruction

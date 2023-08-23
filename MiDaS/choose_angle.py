@@ -1,6 +1,4 @@
 from matrix_analysis import *
-from show_depth_image import show_depth_image
-from scipy import ndimage
 
 
 def choose_angle(depth_estimation_matrix,image_percentage,submatrices,vision_field_degrees):

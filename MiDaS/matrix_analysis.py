@@ -1,5 +1,8 @@
 import numpy as np
 from scipy import ndimage
+import numpy as np
+import matplotlib.pyplot as plt
+import sys
 
 #acepts np.array
 def split_matrix_vertical(matriz):
@@ -96,3 +99,5 @@ def get_middle_horizontal_coordinates(binary_matrix, min_size):
         middle_horizontal_coordinates.append(middle_element)
     
     return middle_horizontal_coordinates
+
+
