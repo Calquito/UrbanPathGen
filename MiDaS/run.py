@@ -1,12 +1,5 @@
 from initialize_variables import *
-from MiDaS_depth_estimation import estimate_depth
-from choose_angle import choose_angle
-from show_depth_image import show_depth_image
-from load_model import load_model
-from matrix_analysis import *
-from drone import Drone
-from generate_images import generate_merged_images
-from PIL import Image
+from complete_analysis import complete_analysis
 
 from scipy import ndimage
 import torch
@@ -14,51 +7,46 @@ import time
 import numpy as np
 import torch.nn.functional as F
 import cv2
+import threading
+import multiprocessing
 
 
-def run():
+def main():
+    last_screenshot_time = time.time()
+    video_start_time=time.time()
+    
+    frame_counter = 0
+    screenshot_counter=0
 
-    #load de MiDaS model to be used
-    transform,device,midas=load_model(model_type)
+    #reads the video
+    while True:
+        success, frame = cap.read()
+        
+        if success:
+            frame_counter += 1
+            current_time = time.time()
 
-    # Create a list to store drones
-    drones = []
+            #take current frame
+            if current_time - last_screenshot_time >= interval_seconds:
+                screenshot_filename = f"MiDaS/video_frames/screenshot_{screenshot_counter}.png"
+                cv2.imwrite(screenshot_filename, frame)
+                print(f"Captura de pantalla guardada: {screenshot_filename}")
+                last_screenshot_time = time.time()
+                screenshot_counter+=1
+                thread = threading.Thread(target=complete_analysis,args=(screenshot_filename, f"MiDaS/image_analysis/frame_{screenshot_counter}.png",transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,num_drones,drones))
+                thread.start()
+                
+            cv2.imshow("Video", frame)
+            
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        else:
+            break
 
-    for i in range(num_drones):
-        drone = Drone(i, 30, vision_field_degrees)
-        drones.append(drone)
+        time.sleep(0.01)
+    
+    cap.release()
+    cv2.destroyAllWindows()
 
-
-    start_time = time.time()  # Register initial time
-
-    #get depth_estimation_matrix
-    depth_estimation_matrix=estimate_depth(original_image,transform,device,midas)
-
-    # Convert numpy matrix to PyTorch tensor
-    depth_tensor = torch.tensor(depth_estimation_matrix, dtype=torch.float32)
-
-    # Threshold
-    threshold = np.max(depth_estimation_matrix)*threshold_fraction
-
-    # Apply threshold
-    depth_area = np.array((depth_tensor < threshold).float())
-
-    angles, bounded_matrix= choose_angle(depth_area,image_percentage,submatrices,vision_field_degrees)
-
-    print("There are "+str(len(angles))+" posible routes, in the directions "+ str(angles))
-
-
-    for i in range(num_drones):
-        direction = angles[i % len(angles)]
-        drone = drones[i]
-        turning_instruction = drone.turn(direction)
-
-    end_time = time.time()  # Registra el tiempo de finalización
-    elapsed_time = end_time - start_time  # Calcula el tiempo transcurrido
-    print(f"Tiempo transcurrido: {elapsed_time} segundos")
-
-    generate_merged_images([np.array(Image.open(original_image)),depth_area,depth_estimation_matrix],"MiDaS/image_analysis/a.png")
-
-
-if __name__ == "__main__":
-    run()s
+#main()
+complete_analysis(original_image, f"MiDaS/image_analysis/frame_.png",transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,num_drones,drones)
