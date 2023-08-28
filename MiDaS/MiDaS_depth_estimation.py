@@ -11,7 +11,7 @@ def estimate_depth(filename,transform,device,midas):
     input_batch = transform(img).to(device)
 
     with torch.no_grad():
-        prediction = midas(input_batch)
+        prediction = midas(input_batch) 
 
         prediction = torch.nn.functional.interpolate(
             prediction.unsqueeze(1),

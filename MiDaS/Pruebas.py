@@ -1,33 +1,30 @@
-import numpy as np
+import cv2
+import threading
+import queue
 
-def find_min_sum_submatrix(matrix, N):
-    rows, cols = matrix.shape
-    num_submatrices_rows = rows // N
-    num_submatrices_cols = cols // N
-    
-    min_sum = float('inf')
-    min_row, min_col = None, None
-    
-    for i in range(num_submatrices_rows):
-        for j in range(num_submatrices_cols):
-            submatrix = matrix[i*N : (i+1)*N, j*N : (j+1)*N]
-            submatrix_sum = np.sum(submatrix)
-            
-            if submatrix_sum < min_sum:
-                min_sum = submatrix_sum
-                min_row, min_col = i*N, j*N
-    
-    return min_row, min_col
+def thread_function(queue):
+    cap = cv2.VideoCapture(0)
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        queue.put(frame)
+    cap.release()
 
-# Ejemplo de uso
-matrix = np.array([
-    [10, 20, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 16]
-])
+frame_queue = queue.Queue()
 
-N = 2
-min_row, min_col = find_min_sum_submatrix(matrix, N)
+# Create and start the thread
+thread = threading.Thread(target=thread_function, args=(frame_queue,))
+thread.start()
 
-print("Coordenadas del primer elemento de la submatriz con la suma mínima:", min_row, min_col)
+while True:
+    if not frame_queue.empty():
+        frame = frame_queue.get()
+        cv2.imshow("Video", frame)
+
+    key = cv2.waitKey(1)
+    if key == ord('q'):
+        break
+
+thread.join()
+cv2.destroyAllWindows()
