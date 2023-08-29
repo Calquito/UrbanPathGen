@@ -39,7 +39,10 @@ def capture_and_analyze_video(drone):
                 resized_frame = cv2.resize(frame, (new_width, new_height))
                 #cv2.imshow("Video", resized_frame)
 
-            ###USAR TECLA QUE CAMBIE DE CAMARA
+            #use key to change video
+            if cv2.waitKey(1) & 0xFF == ord('s'):
+                break
+
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
         else:
@@ -71,4 +74,5 @@ def main():
 
 
 main()
+#delete_files_in_folder("MiDaS/video_frames")
 

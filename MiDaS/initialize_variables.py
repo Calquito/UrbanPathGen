@@ -59,7 +59,7 @@ transform,device,midas=load_model(model_type)
 drones = []
 
 drones.append(Drone(0,30,vision_field_degrees,cap))
-#drones.append(Drone(1,30,vision_field_degrees,cap1))
+drones.append(Drone(1,30,vision_field_degrees,cap1))
 
 """
 for i in range(num_drones):
