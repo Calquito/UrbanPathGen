@@ -8,11 +8,14 @@ import torch.nn.functional as F
 import cv2
 import threading
 import os
+import multiprocessing
+import keyboard
 
 
 def capture_and_analyze_video(drone):
     last_screenshot_time = time.time()
     screenshot_counter=0
+
 
     #reads the video
     while True:
@@ -20,7 +23,6 @@ def capture_and_analyze_video(drone):
         
         if success:
             current_time = time.time()
-
             #take current frame
             if current_time - last_screenshot_time >= interval_seconds:
                 #take screenshots of the frames
@@ -29,8 +31,16 @@ def capture_and_analyze_video(drone):
 
                 last_screenshot_time = time.time()
                 screenshot_counter+=1
-                thread = threading.Thread(target=complete_analysis,args=(drone,screenshot_filename,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                thread.start()
+
+                #pasar reproducción de video a otro thread
+                #poner variable si es video o camara
+
+                
+                complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees)
+                #thread = multiprocessing.Process(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
+                #thread.start()
+                #thread.join()
+
 
             
             if(show_video):
@@ -40,7 +50,7 @@ def capture_and_analyze_video(drone):
                 #cv2.imshow("Video", resized_frame)
 
             #use key to change video
-            if cv2.waitKey(1) & 0xFF == ord('s'):
+            if keyboard.is_pressed("k"):
                 break
 
             if cv2.waitKey(1) & 0xFF == ord('q'):

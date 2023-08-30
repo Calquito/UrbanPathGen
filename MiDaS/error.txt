@@ -1,0 +1,68 @@
+frame0
+frame0
+Dron 0 turning towards -3.9374999999999996
+frame1
+Dron 1 turning towards -59.765625
+frame1
+Dron 0 turning towards -2.53125
+frame2
+Dron 1 turning towards -59.765625
+frame2
+Dron 0 turning towards -3.65625
+frame3
+Dron 1 turning towards -59.625
+frame3
+Dron 0 turning towards -4.21875
+frame4
+Exception in thread Thread-11 (complete_analysis):
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\threading.py", line 1038, in _bootstrap_inner
+    self.run()
+  File "C:\Program Files\Python311\Lib\threading.py", line 975, in run
+    self._target(*self._args, **self._kwargs)
+  File "c:\Users\allan.calderon\OneDrive - Corporacion Font S.A\Desktop\personal\TFG\UrbanPathGen\MiDaS\complete_analysis.py", line 14, in complete_analysis
+    depth_estimation_matrix=estimate_depth(image,transform,device,midas)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\allan.calderon\OneDrive - Corporacion Font S.A\Desktop\personal\TFG\UrbanPathGen\MiDaS\MiDaS_depth_estimation.py", line 15, in estimate_depth
+    prediction = midas(input_batch)
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon\AppData\Roaming\Python\Python311\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon/.cache\torch\hub\intel-isl_MiDaS_master\midas\dpt_depth.py", line 166, in forward
+    return super().forward(x).squeeze(dim=1)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon/.cache\torch\hub\intel-isl_MiDaS_master\midas\dpt_depth.py", line 114, in forward
+    layers = self.forward_transformer(self.pretrained, x)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon/.cache\torch\hub\intel-isl_MiDaS_master\midas\backbones\vit.py", line 13, in forward_vit
+    return forward_adapted_unflatten(pretrained, x, "forward_flex")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon/.cache\torch\hub\intel-isl_MiDaS_master\midas\backbones\utils.py", line 115, in forward_adapted_unflatten
+    layer_3 = unflatten(layer_3)
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon\AppData\Roaming\Python\Python311\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon\AppData\Roaming\Python\Python311\site-packages\torch\nn\modules\container.py", line 217, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon\AppData\Roaming\Python\Python311\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon\AppData\Roaming\Python\Python311\site-packages\torch\nn\modules\flatten.py", line 139, in forward
+    return input.unflatten(self.dim, self.unflattened_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan.calderon\AppData\Roaming\Python\Python311\site-packages\torch\_tensor.py", line 1189, in unflatten
+    return super().unflatten(dim, sizes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: unflatten: Provided sizes [24, 32] don't multiply up to the size of dim 2 (1008) in the input tensor
+frame5
+Dron 1 turning towards -59.765625
+frame4
+Dron 0 turning towards -4.78125
+frame6
+Dron 1 turning towards -58.921875
+frame5
+Dron 0 turning towards -4.5
+frame7

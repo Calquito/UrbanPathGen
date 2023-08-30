@@ -6,12 +6,19 @@ from matrix_analysis import *
 from drone import Drone
 from generate_images import generate_merged_images
 import torch
+import time
 
 
 
 def complete_analysis(drone,image,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees):
+    start_time = time.time()
+    
     #get depth_estimation_matrix
     depth_estimation_matrix=estimate_depth(image,transform,device,midas)
+    end_time = time.time()
+    execution_time = end_time - start_time
+
+    print(f"Inference time: {execution_time:.6f} seconds")
 
     # Convert numpy matrix to PyTorch tensor
     depth_tensor = torch.tensor(depth_estimation_matrix, dtype=torch.float32)
@@ -34,7 +41,6 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,imag
     else:
         #if there are no routes
         turning_instruction = drone.turn(180)
-        
 
     return depth_area, depth_estimation_matrix,bounded_matrix
 

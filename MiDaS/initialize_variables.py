@@ -19,17 +19,18 @@ num_drones=2
 #Video variables#################################################
 video_path='MiDaS/test_video/aa.webm'
 
-cap1 = cv2.VideoCapture(video_path)
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(video_path)
+cap1 = cv2.VideoCapture(0)
+cap2 = cv2.VideoCapture(video_path)
 
 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
 video_duration = frame_count / frame_rate
 
 
-interval_seconds = 4
+interval_seconds = 5
 
-show_video=True
+show_video=False
 analyze_screenshots=False
 
 #video resolution can be to big, so to resize it
@@ -48,8 +49,8 @@ threshold_fraction=0.25
 frecuency_of_images=3
 
 #model_type = "DPT_Large"     # MiDaS v3 - Large     (highest accuracy, slowest inference speed)
-model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium inference speed)
-#model_type = "MiDaS_small"  # MiDaS v2.1 - Small   (lowest accuracy, highest inference speed)
+#model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium inference speed)
+model_type = "MiDaS_small"  # MiDaS v2.1 - Small   (lowest accuracy, highest inference speed)
 
 #Variables for complete analysis###############################
 #load de MiDaS model to be used
@@ -58,8 +59,9 @@ transform,device,midas=load_model(model_type)
 # Create a list to store drones
 drones = []
 
-drones.append(Drone(0,30,vision_field_degrees,cap))
+#drones.append(Drone(0,30,vision_field_degrees,cap))
 drones.append(Drone(1,30,vision_field_degrees,cap1))
+#drones.append(Drone(2,30,vision_field_degrees,cap2))
 
 """
 for i in range(num_drones):
