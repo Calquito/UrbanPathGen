@@ -53,8 +53,8 @@ frecuency_of_images=3
 
 #model_type = "DPT_Large"     # MiDaS v3 - Large     (highest accuracy, slowest inference speed)
 #model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium inference speed)
-#model_type = "MiDaS_small"  # MiDaS v2.1 - Small   (lowest accuracy, highest inference speed)
-model_type = "dpt_levit_224"
+model_type = "MiDaS_small"  # MiDaS v2.1 - Small   (lowest accuracy, highest inference speed)
+#model_type = "dpt_levit_224"
 
 #Variables for complete analysis###############################
 #load de MiDaS model to be used

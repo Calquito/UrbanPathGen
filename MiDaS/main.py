@@ -13,14 +13,14 @@ import keyboard
 
 
 
-
-def capture_and_analyze_video(drone,num_drones):
+def capture_and_analyze_video(drone,frames_list):
     last_screenshot_time = time.time()
     screenshot_counter=0
 
     #reads the video
     while True:
         success, frame = drone.cap.read()
+        frames_list[drone.id]=frame
         
         if success:
             current_time = time.time()
@@ -40,15 +40,21 @@ def capture_and_analyze_video(drone,num_drones):
                 #complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees)
                 thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
                 thread.start()
-                
-
-
             
-            if(show_video and dron_to_show==drone.id):
-                new_width = int(frame.shape[1] * resize_fraction)
-                new_height = int(frame.shape[0] * resize_fraction)
-                resized_frame = cv2.resize(frame, (new_width, new_height))
-                cv2.imshow("Video", resized_frame)
+            
+            if(show_video and drone.id==0):
+                a=time.time()
+                resized_frames_list=[]
+                for frame in frames_list:
+                    new_width = 320
+                    new_height = 240
+                    resized_frame = cv2.resize(frame, (new_width, new_height))
+                    resized_frames_list.append(resized_frame)
+
+                resultado = cv2.hconcat(resized_frames_list)
+                cv2.imshow('Video', resultado)
+            else:
+                time.sleep(0.03)
 
             #use key to kill
             if keyboard.is_pressed("k"):
@@ -72,12 +78,21 @@ def main():
     #clean previous screenshtots
     delete_files_in_folder("MiDaS/video_frames")
 
+    #to show frames together
+    frames_list=[]
+    for drone in drones:
+        #add first frame
+        success, frame = drone.cap.read()
+        frames_list.append(frame)
+
     #define one thread for every instance of the dron
     threads = []
-    for instance in drones:
-        thread = threading.Thread(target=capture_and_analyze_video, args=[instance,dron_to_show])
+    for drone in drones:
+        #create thread to capture image
+        thread = threading.Thread(target=capture_and_analyze_video, args=[drone,frames_list])
         threads.append(thread)
         thread.start()
+    
     # Wait for all threads to finish
     for thread in threads:
         thread.join()
