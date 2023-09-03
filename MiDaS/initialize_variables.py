@@ -12,25 +12,22 @@ vision_field_degrees=180
 #turning accuracy
 accuracy=10
 
-#number of drones
-num_drones=2
 #################################################################
 
 #Video variables#################################################
 video_path='MiDaS/test_video/aa.webm'
 
+"""
 cap = cv2.VideoCapture(video_path)
 cap1 = cv2.VideoCapture(0)
-cap2 = cv2.VideoCapture(video_path)
+cap2 = cv2.VideoCapture(video_path)"""
 
-frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
-video_duration = frame_count / frame_rate
+
 
 
 interval_seconds = 5
 
-show_video=True
+show_video=False
 analyze_screenshots=False
 
 #video resolution can be to big, so to resize it
@@ -63,9 +60,11 @@ transform,device,midas=load_model(model_type)
 # Create a list to store drones
 drones = []
 
-drones.append(Drone(0,30,vision_field_degrees,cap))
-drones.append(Drone(1,30,vision_field_degrees,cap1))
-#drones.append(Drone(2,30,vision_field_degrees,cap2))
+drones.append(Drone(0,30,vision_field_degrees,video_path))
+drones.append(Drone(1,30,vision_field_degrees,0))
+drones.append(Drone(2,30,vision_field_degrees,video_path))
+
+num_drones=len(drones)
 
 """
 for i in range(num_drones):

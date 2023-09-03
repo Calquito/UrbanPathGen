@@ -13,13 +13,29 @@ import keyboard
 
 
 
-def capture_and_analyze_video(drone,frames_list):
+def capture_and_analyze_video(drone,frames_list,num_drones):
+    ##video
+    cap = cv2.VideoCapture(drone.video_source)
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
+    video_duration = frame_count / frame_rate
+
+    success, frame = cap.read()
+    frames_list.append(frame)
+
+    #wait for first frame of all drones
+
+    while(len(frames_list)<num_drones):
+        print(len(frames_list))
+        time.sleep(1)
+
+    ######################################3
     last_screenshot_time = time.time()
     screenshot_counter=0
 
     #reads the video
     while True:
-        success, frame = drone.cap.read()
+        success, frame = cap.read()
         frames_list[drone.id]=frame
         
         if success:
@@ -43,7 +59,6 @@ def capture_and_analyze_video(drone,frames_list):
             
             
             if(show_video and drone.id==0):
-                a=time.time()
                 resized_frames_list=[]
                 for frame in frames_list:
                     new_width = 320
@@ -79,17 +94,16 @@ def main():
     delete_files_in_folder("MiDaS/video_frames")
 
     #to show frames together
-    frames_list=[]
-    for drone in drones:
-        #add first frame
-        success, frame = drone.cap.read()
-        frames_list.append(frame)
+    #frames_list=[]
+
+    manager = multiprocessing.Manager()
+    frames_list = manager.list()
 
     #define one thread for every instance of the dron
     threads = []
     for drone in drones:
         #create thread to capture image
-        thread = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list])
+        thread = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones])
         threads.append(thread)
         thread.start()
     
@@ -99,7 +113,7 @@ def main():
 
     
 
-
-main()
+if __name__ == '__main__': 
+    main()
 #delete_files_in_folder("MiDaS/video_frames")
 
