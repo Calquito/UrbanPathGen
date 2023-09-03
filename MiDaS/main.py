@@ -53,8 +53,8 @@ def capture_and_analyze_video(drone,frames_list):
 
                 resultado = cv2.hconcat(resized_frames_list)
                 cv2.imshow('Video', resultado)
-            else:
-                time.sleep(0.03)
+            elif(show_video):
+                time.sleep(0.01)
 
             #use key to kill
             if keyboard.is_pressed("k"):
@@ -89,7 +89,7 @@ def main():
     threads = []
     for drone in drones:
         #create thread to capture image
-        thread = threading.Thread(target=capture_and_analyze_video, args=[drone,frames_list])
+        thread = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list])
         threads.append(thread)
         thread.start()
     
