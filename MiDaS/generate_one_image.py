@@ -5,7 +5,7 @@ from PIL import Image
 from initialize_variables import *
 
 
-filename='MiDaS\\imagenes_de_prueba\\2.jpeg'
+filename='MiDaS\\video_frames\\screenshot_0_drone1.png'
 image = cv2.imread(filename)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 

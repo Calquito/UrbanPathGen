@@ -30,11 +30,14 @@ video_duration = frame_count / frame_rate
 
 interval_seconds = 5
 
-show_video=False
+show_video=True
 analyze_screenshots=False
 
 #video resolution can be to big, so to resize it
 resize_fraction=0.5
+
+#dron video to show (dron.id has to exist)
+dron_to_show=0
 
 ###############################################################
 #number of submatrices
@@ -50,7 +53,8 @@ frecuency_of_images=3
 
 #model_type = "DPT_Large"     # MiDaS v3 - Large     (highest accuracy, slowest inference speed)
 #model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium inference speed)
-model_type = "MiDaS_small"  # MiDaS v2.1 - Small   (lowest accuracy, highest inference speed)
+#model_type = "MiDaS_small"  # MiDaS v2.1 - Small   (lowest accuracy, highest inference speed)
+model_type = "dpt_levit_224"
 
 #Variables for complete analysis###############################
 #load de MiDaS model to be used
@@ -59,9 +63,9 @@ transform,device,midas=load_model(model_type)
 # Create a list to store drones
 drones = []
 
-#drones.append(Drone(0,30,vision_field_degrees,cap))
+drones.append(Drone(0,30,vision_field_degrees,cap))
 drones.append(Drone(1,30,vision_field_degrees,cap1))
-#drones.append(Drone(2,30,vision_field_degrees,cap2))
+drones.append(Drone(2,30,vision_field_degrees,cap2))
 
 """
 for i in range(num_drones):

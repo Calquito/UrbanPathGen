@@ -12,10 +12,11 @@ import multiprocessing
 import keyboard
 
 
-def capture_and_analyze_video(drone):
+
+
+def capture_and_analyze_video(drone,num_drones):
     last_screenshot_time = time.time()
     screenshot_counter=0
-
 
     #reads the video
     while True:
@@ -35,21 +36,21 @@ def capture_and_analyze_video(drone):
                 #pasar reproducción de video a otro thread
                 #poner variable si es video o camara
 
+
+                #complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees)
+                thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
+                thread.start()
                 
-                complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees)
-                #thread = multiprocessing.Process(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                #thread.start()
-                #thread.join()
 
 
             
-            if(show_video):
+            if(show_video and dron_to_show==drone.id):
                 new_width = int(frame.shape[1] * resize_fraction)
                 new_height = int(frame.shape[0] * resize_fraction)
                 resized_frame = cv2.resize(frame, (new_width, new_height))
-                #cv2.imshow("Video", resized_frame)
+                cv2.imshow("Video", resized_frame)
 
-            #use key to change video
+            #use key to kill
             if keyboard.is_pressed("k"):
                 break
 
@@ -59,10 +60,11 @@ def capture_and_analyze_video(drone):
             break
 
 
-        time.sleep(0.01)
+        time.sleep(0.005)
     
     cap.release()
     cv2.destroyAllWindows()
+
 
 
 def main():
@@ -73,7 +75,7 @@ def main():
     #define one thread for every instance of the dron
     threads = []
     for instance in drones:
-        thread = threading.Thread(target=capture_and_analyze_video, args=[instance])
+        thread = threading.Thread(target=capture_and_analyze_video, args=[instance,dron_to_show])
         threads.append(thread)
         thread.start()
     # Wait for all threads to finish
