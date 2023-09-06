@@ -130,7 +130,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones):
                 if current_time - last_screenshot_time >= interval_seconds:
                     #take screenshots of the frames
                     if(take_screenshots):
-                        screenshot_filename = f"MiDaS/video_frames/screenshot_{screenshot_counter}_drone{drone.id}.png"
+                        screenshot_filename = f"MiDaS/video_frames/screenshot_{screenshot_counter}_drone_{drone.id}.png"
                         cv2.imwrite(screenshot_filename, frame)
 
                     last_screenshot_time = time.time()

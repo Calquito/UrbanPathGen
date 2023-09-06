@@ -15,17 +15,17 @@ def main():
     manager = multiprocessing.Manager()
     frames_list = manager.list()
 
-    #define one thread for every instance of the dron
-    threads = []
+    #define one process for every instance of the dron
+    processes = []
     for drone in drones:
-        #create thread to capture image
-        thread = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones])
-        threads.append(thread)
-        thread.start()
+        #create process to capture image
+        process = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones])
+        processes.append(process)
+        process.start()
     
-    # Wait for all threads to finish
-    for thread in threads:
-        thread.join()
+    # Wait for all processes to finish
+    for process in processes:
+        process.join()
 
     
 
