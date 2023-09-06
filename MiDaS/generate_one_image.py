@@ -3,6 +3,7 @@ from generate_images import generate_merged_images
 import numpy as np
 from PIL import Image
 from initialize_variables import *
+import cv2
 
 
 filename='MiDaS\\video_frames\\screenshot_0_drone1.png'

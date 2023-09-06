@@ -40,7 +40,10 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,imag
         turning_instruction = drone.turn(direction)
     else:
         #if there are no routes
-        turning_instruction = drone.turn(180)
+        if(drone.id%2==0):
+            turning_instruction = drone.turn("right")
+        else:
+            turning_instruction = drone.turn("left")
 
     return depth_area, depth_estimation_matrix,bounded_matrix
 

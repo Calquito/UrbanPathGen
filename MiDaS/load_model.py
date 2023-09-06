@@ -11,11 +11,12 @@ def load_model(model_type):
 
     midas_transforms = torch.hub.load("intel-isl/MiDaS", "transforms")
 
-    transform = midas_transforms.default_transform
-    """
+    
     if model_type == "DPT_Large" or model_type == "DPT_Hybrid":
         transform = midas_transforms.dpt_transform
+    elif model_type == "MiDaS":
+        transform = midas_transforms.default_transform
     else:
-        transform = midas_transforms.small_transform"""
+        transform = midas_transforms.small_transform
     
     return transform,device,midas

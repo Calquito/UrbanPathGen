@@ -1,8 +1,6 @@
-import cv2
-import time
 from drone import Drone
 from load_model import load_model
-import copy
+
 
 #HARDWARE DEPENDENT###########################################
 
@@ -15,19 +13,15 @@ accuracy=10
 #################################################################
 
 #Video variables#################################################
-video_path='MiDaS/test_video/aa.webm'
 
 """
 cap = cv2.VideoCapture(video_path)
 cap1 = cv2.VideoCapture(0)
 cap2 = cv2.VideoCapture(video_path)"""
 
-
-
-
 interval_seconds = 5
 
-show_video=False
+show_video=True
 analyze_screenshots=False
 
 #video resolution can be to big, so to resize it
@@ -35,6 +29,9 @@ resize_fraction=0.5
 
 #dron video to show (dron.id has to exist)
 dron_to_show=0
+
+take_screenshots=True
+between_frame_sleep_time=0.005
 
 ###############################################################
 #number of submatrices
@@ -60,9 +57,9 @@ transform,device,midas=load_model(model_type)
 # Create a list to store drones
 drones = []
 
-drones.append(Drone(0,30,vision_field_degrees,video_path))
-drones.append(Drone(1,30,vision_field_degrees,0))
-drones.append(Drone(2,30,vision_field_degrees,video_path))
+drones.append(Drone(0,30,vision_field_degrees,'MiDaS/test_video/aa.webm','video'))
+drones.append(Drone(1,30,vision_field_degrees,0,'camera'))
+drones.append(Drone(2,30,vision_field_degrees,'MiDaS/test_video/woods.mp4','video'))
 
 num_drones=len(drones)
 
