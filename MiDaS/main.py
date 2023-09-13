@@ -31,7 +31,7 @@ def main():
     processes = []
     for drone in drones:
         #create process to capture image
-        process = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones,sleep_times[drone.id]])
+        process = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones,sleep_times[drone.id],interval_seconds])
         processes.append(process)
         process.start()
 
