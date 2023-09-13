@@ -1,0 +1,156 @@
+Drone 1 is reading camera
+Drone 0 is reading video
+Drone 2 is reading video
+Drone 3 is reading video
+Inference time: 1.214031 seconds
+Dron 1 turning towards left
+Inference time: 1.330034 seconds
+Dron 0 turning towards 11.538732394366198
+Inference time: 1.493322 seconds
+Dron 2 turning towards right
+Inference time: 1.818243 seconds
+Dron 3 turning towards left
+Inference time: 1.210374 seconds
+Dron 1 turning towards left
+Inference time: 1.338743 seconds
+Dron 0 turning towards -34.00352112676056
+Inference time: 1.457563 seconds
+Dron 2 turning towards -12.968309859154928
+Inference time: 1.653193 seconds
+Dron 3 turning towards 21.647887323943664
+Inference time: 1.342738 seconds
+Dron 1 turning towards left
+Inference time: 1.335670 seconds
+Dron 0 turning towards -27.366197183098592
+Inference time: 1.408836 seconds
+Dron 2 turning towards right
+Inference time: 1.718783 seconds
+Dron 3 turning towards left
+Inference time: 1.282612 seconds
+Dron 1 turning towards left
+Inference time: 1.595682 seconds
+Dron 0 turning towards right
+Inference time: 1.769389 seconds
+Dron 2 turning towards right
+Inference time: 1.722042 seconds
+Dron 3 turning towards left
+Inference time: 1.347476 seconds
+Dron 1 turning towards left
+Inference time: 1.318135 seconds
+Dron 0 turning towards 1.3274647887323943
+Inference time: 1.496134 seconds
+Dron 2 turning towards -20.830985915492956
+Inference time: 1.709519 seconds
+Dron 3 turning towards 5.309859154929577
+Inference time: 1.183609 seconds
+Dron 1 turning towards left
+Inference time: 1.349079 seconds
+Dron 0 turning towards 4.799295774647887
+Inference time: 1.442031 seconds
+Dron 2 turning towards right
+Inference time: 1.659961 seconds
+Dron 3 turning towards left
+Inference time: 1.353357 seconds
+Dron 1 turning towards left
+Inference time: 1.282594 seconds
+Dron 0 turning towards right
+Inference time: 1.438968 seconds
+Dron 2 turning towards right
+Inference time: 1.679025 seconds
+Dron 3 turning towards left
+Inference time: 1.115208 seconds
+Dron 1 turning towards left
+Inference time: 1.192085 seconds
+Dron 0 turning towards right
+Inference time: 1.294025 seconds
+Dron 2 turning towards -19.6056338028169
+Inference time: 1.562384 seconds
+Dron 3 turning towards -12.866197183098592
+Inference time: 1.222138 seconds
+Dron 1 turning towards left
+Inference time: 1.220408 seconds
+Dron 0 turning towards 27.46830985915493
+Inference time: 1.322048 seconds
+Dron 2 turning towards 16.03169014084507
+Inference time: 1.627614 seconds
+Dron 3 turning towards left
+Inference time: 1.149032 seconds
+Dron 1 turning towards left
+Inference time: 1.208306 seconds
+Dron 0 turning towards -25.732394366197184
+Inference time: 1.312792 seconds
+Dron 2 turning towards -15.11267605633803
+Inference time: 1.551999 seconds
+Dron 3 turning towards 31.1443661971831
+Inference time: 1.216920 seconds
+Dron 1 turning towards left
+Inference time: 1.216014 seconds
+Dron 0 turning towards -10.211267605633802
+Inference time: 1.347204 seconds
+Dron 2 turning towards right
+Inference time: 1.647706 seconds
+Dron 3 turning towards left
+Inference time: 1.231552 seconds
+Dron 1 turning towards left
+Inference time: 1.213285 seconds
+Dron 0 turning towards 25.119718309859156
+Inference time: 1.379754 seconds
+Dron 2 turning towards right
+Inference time: 1.556194 seconds
+Dron 3 turning towards -33.2887323943662
+Inference time: 1.323410 seconds
+Dron 1 turning towards left
+Inference time: 1.282821 seconds
+Dron 0 turning towards right
+Inference time: 1.326872 seconds
+Dron 2 turning towards right
+Inference time: 1.599100 seconds
+Dron 3 turning towards left
+Inference time: 1.171890 seconds
+Dron 1 turning towards left
+Inference time: 1.196361 seconds
+Dron 0 turning towards 24.81338028169014
+Inference time: 1.322473 seconds
+Dron 2 turning towards right
+Inference time: 1.497495 seconds
+Dron 3 turning towards left
+Inference time: 1.228062 seconds
+Dron 1 turning towards left
+Inference time: 1.176878 seconds
+Dron 0 turning towards right
+Inference time: 1.311075 seconds
+Dron 2 turning towards -29.714788732394364
+Inference time: 1.583609 seconds
+Dron 3 turning towards -36.86267605633803
+Inference time: 1.236259 seconds
+Dron 1 turning towards left
+Inference time: 1.198434 seconds
+Dron 0 turning towards right
+Inference time: 1.381195 seconds
+Dron 2 turning towards right
+Inference time: 1.533661 seconds
+Dron 3 turning towards left
+Inference time: 1.183752 seconds
+Dron 1 turning towards left
+Inference time: 1.205969 seconds
+Dron 0 turning towards right
+Inference time: 1.353915 seconds
+Dron 2 turning towards -21.239436619718308
+Inference time: 1.593652 seconds
+Dron 3 turning towards left
+Inference time: 1.233890 seconds
+Dron 1 turning towards left
+Inference time: 1.150705 seconds
+Dron 0 turning towards 21.85211267605634
+Inference time: 1.312651 seconds
+Dron 2 turning towards right
+Inference time: 1.481949 seconds
+Dron 3 turning towards left
+Inference time: 1.200197 seconds
+Dron 1 turning towards 0.0
+Inference time: 1.198264 seconds
+Dron 0 turning towards right
+Inference time: 1.533069 seconds
+Dron 2 turning towards right
+Inference time: 1.574725 seconds
+Dron 3 turning towards left

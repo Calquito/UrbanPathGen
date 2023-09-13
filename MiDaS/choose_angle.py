@@ -3,10 +3,10 @@ from matrix_analysis import *
 
 def choose_angle(depth_estimation_matrix,image_percentage,submatrices,vision_field_degrees):
 
-    adjusted_matrix=remove_extra_columns(depth_estimation_matrix,submatrices)
+    #adjusted_matrix=remove_extra_columns(depth_estimation_matrix,submatrices)
 
     #start_row to sum it in case of needing the y coordinate
-    bounded_matrix, start_row = select_center_rows(adjusted_matrix,image_percentage)
+    bounded_matrix, start_row = select_center_rows(depth_estimation_matrix,image_percentage)
 
     #submatrix NxN dimension
     submatrix_dimension=bounded_matrix.shape[1]//submatrices

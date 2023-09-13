@@ -10,7 +10,7 @@ import multiprocessing
 
 
 
-def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time):
+def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time,interval_seconds):
     ##video
     cap = cv2.VideoCapture(drone.video_source)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -37,7 +37,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time):
         while True:
             success, frame = cap.read()
             frames_list[drone.id]=frame
-            
+            #frame=cv2.resize(frame, (681,384))
             if success:
                 current_time = time.time()
                 #take current frame
@@ -86,8 +86,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time):
         print("Drone "+str(drone.id)+" is reading video")
         while True:
             success, frame = cap.read()
-            frames_list[drone.id]=frame
-            
+            #frame=cv2.resize(frame, (681,384))
             if success:
                 current_time = time.time()
                 #take current frame
@@ -124,8 +123,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time):
         print("Drone "+str(drone.id)+" is reading camera")
         while True:
             success, frame = cap.read()
-            frames_list[drone.id]=frame
-            
+            #frame=cv2.resize(frame, (681,384))
             if success:
                 current_time = time.time()
                 #take current frame

@@ -1,0 +1,42 @@
+Drone 1 is reading camera
+Drone 0 is reading video
+Drone 2 is reading video
+Drone 3 is reading video
+Inference time: 1.559385 seconds
+Dron 1 turning towards -0.8156249999999999
+Inference time: 1.481597 seconds
+Dron 0 turning towards right
+Inference time: 1.286376 seconds
+Dron 2 turning towards 22.056338028169012
+Inference time: 1.311814 seconds
+Dron 3 turning towards left
+Inference time: 1.243438 seconds
+Dron 1 turning towards -2.446875
+Inference time: 1.493580 seconds
+Dron 0 turning towards -12.764084507042254
+Inference time: 1.573864 seconds
+Dron 2 turning towards -34.20774647887324
+Inference time: 1.373467 seconds
+Dron 3 turning towards 10.415492957746478
+Inference time: 1.585734 seconds
+Dron 1 turning towards -3.2624999999999997
+Inference time: 1.618182 seconds
+Dron 0 turning towards right
+Inference time: 1.523347 seconds
+Dron 2 turning towards right
+Inference time: 1.287838 seconds
+Dron 3 turning towards 27.774647887323944
+Inference time: 1.314664 seconds
+Dron 1 turning towards -3.1265625
+Inference time: 1.589110 seconds
+Dron 0 turning towards right
+Inference time: 1.326068 seconds
+Dron 2 turning towards right
+Inference time: 1.106099 seconds
+Dron 3 turning towards -20.116197183098592
+Inference time: 1.276344 seconds
+Dron 1 turning towards -3.2624999999999997
+Inference time: 1.308795 seconds
+Dron 0 turning towards 7.147887323943663
+Inference time: 1.255708 seconds
+Dron 2 turning towards right
