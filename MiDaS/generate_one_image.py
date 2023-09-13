@@ -6,7 +6,8 @@ from initialize_variables import *
 import cv2
 
 
-filename='MiDaS\\video_frames\\screenshot_1_drone2.png'
+#filename='MiDaS\\video_frames\\screenshot_1_drone2.png'
+filename='MiDaS\\imagenes_de_prueba\\original.jpeg'
 image = cv2.imread(filename)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 

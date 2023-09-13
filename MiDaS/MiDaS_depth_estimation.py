@@ -1,6 +1,5 @@
-import cv2
 import torch
-import numpy as np
+
 
 
 def estimate_depth(filename,transform,device,midas):

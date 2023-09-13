@@ -5,19 +5,14 @@ from load_model import load_model
 #HARDWARE DEPENDENT###########################################
 
 #vision field of the dron camera
-vision_field_degrees=180
+vision_field_degrees=87 #AI-deck color camera module
 
 #turning accuracy
-accuracy=10
+accuracy=5
 
 #################################################################
 
 #Video variables#################################################
-
-"""
-cap = cv2.VideoCapture(video_path)
-cap1 = cv2.VideoCapture(0)
-cap2 = cv2.VideoCapture(video_path)"""
 
 interval_seconds = 5
 
@@ -44,7 +39,7 @@ image_percentage=100
 #threshold fraction
 threshold_fraction=0.25
 
-frecuency_of_images=3
+#frecuency_of_images=3
 
 #model_type = "DPT_Large"     # MiDaS v3 - Large     (highest accuracy, slowest inference speed)
 model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium inference speed)
@@ -62,6 +57,7 @@ drones = []
 drones.append(Drone(0,30,vision_field_degrees,'MiDaS/test_video/building.mp4','video'))
 drones.append(Drone(1,30,vision_field_degrees,0,'camera'))
 drones.append(Drone(2,30,vision_field_degrees,'MiDaS/test_video/woods.mp4','video'))
+drones.append(Drone(3,30,vision_field_degrees,'MiDaS/test_video/woods.mp4','video'))
 
 num_drones=len(drones)
 

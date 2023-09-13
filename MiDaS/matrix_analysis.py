@@ -1,8 +1,7 @@
 import numpy as np
 from scipy import ndimage
 import numpy as np
-import matplotlib.pyplot as plt
-import sys
+
 
 #acepts np.array
 def split_matrix_vertical(matriz):

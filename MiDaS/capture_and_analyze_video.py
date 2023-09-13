@@ -6,10 +6,11 @@ import torch.nn.functional as F
 import cv2
 import threading
 import keyboard
+import multiprocessing
 
 
 
-def capture_and_analyze_video(drone,frames_list,num_drones):
+def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time):
     ##video
     cap = cv2.VideoCapture(drone.video_source)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -22,8 +23,9 @@ def capture_and_analyze_video(drone,frames_list,num_drones):
     #wait for first frame of all drones
 
     while(len(frames_list)<num_drones):
-        print(len(frames_list))
         time.sleep(1)
+
+    time.sleep(sleep_time)
 
     ######################################3
     last_screenshot_time = time.time()
