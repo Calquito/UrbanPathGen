@@ -27,7 +27,7 @@ resize_fraction=0.5
 dron_to_show=0
 
 
-between_frame_sleep_time=0.01
+between_frame_sleep_time=5#0.01
 
 ###############################################################
 #number of submatrices

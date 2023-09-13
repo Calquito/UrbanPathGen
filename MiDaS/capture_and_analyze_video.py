@@ -35,6 +35,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time,interval_s
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type)
          #reads the video
         while True:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
             #frame=cv2.resize(frame, (681,384))
@@ -67,12 +68,14 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time,interval_s
                 elif(show_video):
                     time.sleep(0.01)
 
+                #not busy waiting, wont work
+                """
                 #use key to kill
                 if keyboard.is_pressed("k"):
                     break
 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
-                    break
+                    break"""
             else:
                 break
 
@@ -85,6 +88,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time,interval_s
     elif(drone.video_type=='video'):
         print("Drone "+str(drone.id)+" is reading video")
         while True:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, int(screenshot_counter*interval_seconds * frame_rate))
             success, frame = cap.read()
             #frame=cv2.resize(frame, (681,384))
             if success:
@@ -103,12 +107,14 @@ def capture_and_analyze_video(drone,frames_list,num_drones,sleep_time,interval_s
                     thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
                     thread.start()
 
+                #not busy waiting, wont work
+                """
                 #use key to kill
                 if keyboard.is_pressed("k"):
                     break
 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
-                    break
+                    break"""
             else:
                 break
 
