@@ -17,21 +17,21 @@ def main():
     frames_list = manager.list()
 
     #better asigment of resources, not all drones are running in parallel
-    sleep_times=[]
+    before_cicles_sleep_times=[]
 
     #in the first case, do not sleep
-    sleep_times.append(0)
+    before_cicles_sleep_times.append(0)
 
     #-1 because the first was asigned
     for i in range(num_drones-1):
-        sleep_times.append(i*(interval_seconds/num_drones))
+        before_cicles_sleep_times.append(i*(interval_seconds/num_drones))
 
 
     #define one process for every instance of the dron
     processes = []
     for drone in drones:
         #create process to capture image
-        process = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones,sleep_times[drone.id],interval_seconds])
+        process = multiprocessing.Process(target=capture_and_analyze_video, args=[drone,frames_list,num_drones,before_cicles_sleep_times[drone.id],interval_seconds,take_screenshots,dron_to_show])
         processes.append(process)
         process.start()
 
