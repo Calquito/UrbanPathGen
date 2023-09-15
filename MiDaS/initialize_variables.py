@@ -14,10 +14,10 @@ accuracy=5
 
 #Video variables#################################################
 
-interval_seconds = 5
+interval_seconds = 1
 
 show_video=False
-take_screenshots=True
+take_screenshots=False
 analyze_screenshots=False
 
 #video resolution can be to big, so to resize it

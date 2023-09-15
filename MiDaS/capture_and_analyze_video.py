@@ -48,7 +48,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -80,7 +80,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -113,7 +113,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -143,7 +143,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -170,7 +170,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         while True:
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(screenshot_counter*interval_seconds * frame_rate))
             success, frame = cap.read()
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -198,7 +198,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         while True:
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(screenshot_counter*interval_seconds * frame_rate))
             success, frame = cap.read()
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -223,7 +223,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         print("Drone "+str(drone.id)+" is reading camera"+" and taking screenshots")
         while True:
             success, frame = cap.read()
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame
@@ -244,7 +244,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         print("Drone "+str(drone.id)+" is reading camera"+" and not taking screenshots")
         while True:
             success, frame = cap.read()
-            #frame=cv2.resize(frame, (681,384))
+            
             if success:
                 current_time = time.time()
                 #take current frame

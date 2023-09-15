@@ -1,0 +1,3 @@
+pasar de multithreading a multiprocessing
+separar el loop principal en varios loops dependiendo de las variables de entrada
+en vez de continuar leyendo el video, saltar al frame correspondiente en caso de video
