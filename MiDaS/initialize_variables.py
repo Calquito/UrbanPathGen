@@ -27,7 +27,7 @@ resize_fraction=0.5
 dron_to_show=0
 
 
-between_frame_sleep_time=5#0.01
+between_frame_sleep_time=0.3
 
 ###############################################################
 #number of submatrices
@@ -36,7 +36,7 @@ submatrices=vision_field_degrees//accuracy
 #percentaje of the image considererd
 image_percentage=100
 
-#threshold fraction
+#threshold of depth to be considered a route
 threshold_fraction=0.25
 
 #frecuency_of_images=3

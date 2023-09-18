@@ -5,6 +5,7 @@ import torch
 #Midas      default_transform
 def load_model(model_type):
     midas = torch.hub.load("intel-isl/MiDaS", model_type)
+    print("aaaaaaaaaaaaaaaaaaaa"+str(torch.cuda.is_available()))
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     midas.to(device)
     midas.eval()

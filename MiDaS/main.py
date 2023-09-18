@@ -2,7 +2,6 @@ from initialize_variables import *
 from delete_files_in_folder import delete_files_in_folder
 import multiprocessing
 from capture_and_analyze_video import capture_and_analyze_video
-import time
 
 
 def main():

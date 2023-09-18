@@ -1,3 +1,5 @@
 pasar de multithreading a multiprocessing
 separar el loop principal en varios loops dependiendo de las variables de entrada
+(Remover verificaciones innecesarias)
 en vez de continuar leyendo el video, saltar al frame correspondiente en caso de video
+apaga el modo ahorro de energía
