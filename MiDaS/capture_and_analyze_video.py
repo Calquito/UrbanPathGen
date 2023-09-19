@@ -4,9 +4,7 @@ from delete_files_in_folder import delete_files_in_folder
 import time
 import torch.nn.functional as F
 import cv2
-import threading
-import keyboard
-import multiprocessing
+#mport keyboard
 
 def show_current_frame_in_video(frames_list):
     resized_frames_list=[]
@@ -21,6 +19,9 @@ def show_current_frame_in_video(frames_list):
 
 
 def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_time,interval_seconds,take_screenshots,dron_to_show):
+    #load de MiDaS model to be used
+    transform,device,midas=load_model(model_type)
+    
     ##video
     cap = cv2.VideoCapture(drone.video_source)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -58,9 +59,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                    thread.start() 
-                    thread.join()
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
 
                 show_current_frame_in_video(frames_list)
@@ -91,9 +90,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                    thread.start() 
-                    thread.join()
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
 
                 time.sleep(0.01)
@@ -122,9 +119,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                    thread.start() 
-                    thread.join()
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
 
                 show_current_frame_in_video(frames_list)
@@ -153,9 +148,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                    thread.start() 
-                    thread.join()
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
                 time.sleep(0.01)
             else:
@@ -184,9 +177,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                    thread.start() 
-                    thread.join()
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
 
             else:
@@ -210,9 +201,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
                 if current_time - last_screenshot_time >= interval_seconds:
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    thread = threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees))
-                    thread.start() 
-                    thread.join()
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
             else:
                 break
@@ -240,7 +229,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1                    
-                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees)
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
             else:
                 break
         
@@ -257,7 +246,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
                 if current_time - last_screenshot_time >= interval_seconds:
                     last_screenshot_time = time.time()
                     screenshot_counter+=1                    
-                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees)
+                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
             else:
                 break
         

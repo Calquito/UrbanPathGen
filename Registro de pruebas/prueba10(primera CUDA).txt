@@ -1,20 +1,3 @@
-import re
-
-# Función para calcular el promedio de los segundos
-def calcular_promedio(texto):
-    # Buscar todas las coincidencias en el texto usando una expresión regular
-    resultados = re.findall(r'Inference time: (\d+\.\d+) seconds', texto)
-    
-    # Convertir los resultados a números flotantes y calcular el promedio
-    if resultados:
-        segundos = [float(segundo) for segundo in resultados]
-        promedio = sum(segundos) / len(segundos)
-        return promedio
-    else:
-        return 0.0  # Si no se encuentra ninguna coincidencia, el promedio es 0.0
-
-# Ejemplo de uso
-texto = """
 Inference time: 0.804009 seconds
 Dron 0 turning towards right
 Inference time: 1.446713 seconds
@@ -165,7 +148,3 @@ Inference time: 0.103519 seconds
 Dron 1 turning towards 14.68125
 Inference time: 0.074113 seconds
 Dron 2 turning towards right
-"""
-
-promedio = calcular_promedio(texto)
-print(f"El promedio de los segundos es: {promedio:.6f}")
