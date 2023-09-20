@@ -25,7 +25,7 @@ max_speed=1
 
 interval_seconds = 1
 
-show_video=False
+show_video=True
 take_screenshots=False
 analyze_screenshots=False
 
@@ -89,7 +89,7 @@ drones = []
 drones.append(Drone(0,0.5,vision_field_degrees,1.0,4.0,1.5,'MiDaS/test_video/building.mp4','video'))
 drones.append(Drone(1,0.5,vision_field_degrees,1.0,4.0,1.5,0,'camera'))
 drones.append(Drone(2,0.5,vision_field_degrees,1.0,4.0,1.5,'MiDaS/test_video/woods.mp4','video'))
-drones.append(Drone(3,0.5,vision_field_degrees,1.0,4.0,1.5,'MiDaS/test_video/woods.mp4','video'))
+#drones.append(Drone(3,0.5,vision_field_degrees,1.0,4.0,1.5,'MiDaS/test_video/woods.mp4','video'))
 
 num_drones=len(drones)
 

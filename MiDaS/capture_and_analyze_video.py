@@ -4,7 +4,7 @@ from delete_files_in_folder import delete_files_in_folder
 import time
 import torch.nn.functional as F
 import cv2
-#mport keyboard
+import threading
 
 def show_current_frame_in_video(frames_list):
     resized_frames_list=[]
@@ -45,7 +45,6 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and taking screenshots")
          #reads the video
         while True:
-            cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -59,15 +58,15 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
 
+                    thread=threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds))
+                    thread.start()
+    
+                time.sleep(0.007)
 
                 show_current_frame_in_video(frames_list)
             else:
                 break
-
-
-            time.sleep(between_frame_sleep_time)
         
         cap.release()
         cv2.destroyAllWindows()
@@ -76,7 +75,6 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and taking screenshots")
          #reads the video
         while True:
-            cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -90,17 +88,14 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
-
-
+                    thread=threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds))
+                    thread.start()
+    
                 time.sleep(0.01)
 
             else:
                 break
-
-
-            time.sleep(between_frame_sleep_time)
-        
+            
         cap.release()
         cv2.destroyAllWindows()
 
@@ -108,7 +103,6 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and not taking screenshots")
          #reads the video
         while True:
-            cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -119,16 +113,15 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
-
+                    thread=threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds))
+                    thread.start()
+    
+                time.sleep(0.007)
 
                 show_current_frame_in_video(frames_list)
 
             else:
                 break
-
-
-            time.sleep(between_frame_sleep_time)
         
         cap.release()
         cv2.destroyAllWindows()
@@ -137,7 +130,6 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and not taking screenshots")
          #reads the video
         while True:
-            cap.set(cv2.CAP_PROP_POS_FRAMES, int(interval_seconds * frame_rate))
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -148,14 +140,12 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
                     last_screenshot_time = time.time()
                     screenshot_counter+=1
-                    complete_analysis(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds)
-
+                    thread=threading.Thread(target=complete_analysis,args=(drone,frame,transform,device,midas,threshold_fraction,image_percentage,submatrices,vision_field_degrees,interval_seconds))
+                    thread.start()
+    
                 time.sleep(0.01)
             else:
                 break
-
-
-            time.sleep(between_frame_sleep_time)
         
         cap.release()
         cv2.destroyAllWindows()

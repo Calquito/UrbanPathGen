@@ -28,6 +28,7 @@ def estimate_depth(filename,transform,device,midas):
         except Exception as e:
             print("Fallo"+str(cont))
             cont+=1
+            output=[]
 
     return output
 
