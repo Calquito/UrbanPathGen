@@ -57,7 +57,7 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,imag
             #this would be the wsc distance in meters equivalent to the pixels of area_height_pixels
             wcs_height=tan(alpha)*wcs_distance_to_route
 
-            area_height_meters=wcs_height*(areas_in_front_of_camera[route_asigned_by_id][1]/resolutiony)
+            area_height_meters=wcs_height*(areas_in_front_of_camera[route_asigned_by_id][1]/(resolutiony/2))
 
             #check that the dron stays within the limits
             if(areas_in_front_of_camera[route_asigned_by_id][0]=="up" and ((drone.current_height+area_height_meters)<=drone.max_height)):
