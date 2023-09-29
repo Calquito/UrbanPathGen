@@ -9,9 +9,10 @@ def main():
     #clean previous screenshtots
     delete_files_in_folder("MiDaS/video_frames")
 
-    #to show frames together
-    #frames_list=[]
+    #each dron uses one process, instead of threads, due to efficency, and using threads incremented the execution
+    #time depending on the number of drones, can cause stack overflow
 
+    #share variable between processes
     manager = multiprocessing.Manager()
     frames_list = manager.list()
 
@@ -43,5 +44,4 @@ def main():
 
 if __name__ == '__main__': 
     main()
-#delete_files_in_folder("MiDaS/video_frames")
 

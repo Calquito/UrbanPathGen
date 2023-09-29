@@ -7,6 +7,8 @@ import os
 from delete_files_in_folder import delete_files_in_folder
 
 
+#generate images of the original image, the depth estimation plot and the identified routes
+
 def merge_images(image_paths, output_path):
     images = [Image.open(path) for path in image_paths]
 
@@ -34,6 +36,7 @@ def merge_images(image_paths, output_path):
     merged_image.save(output_path)
 
 
+#save matplotlib plot
 def save_plot(input_matrix, filename):
     np.set_printoptions(threshold=sys.maxsize, suppress=True)
     cmap = plt.cm.jet
@@ -42,20 +45,9 @@ def save_plot(input_matrix, filename):
 
     # Save the image in the specified file
     plt.savefig(filename,bbox_inches='tight', pad_inches=0,dpi=300)
-"""
-def save_plot(input_matrix, filename):
-    # Apply 'jet' colormap to the input_matrix
-    colormap = cm.get_cmap('jet')
-    rgba_matrix = colormap(input_matrix) * 255
-    rgba_matrix = rgba_matrix.astype(np.uint8)
-
-    # Create a PIL image from the RGBA array
-    image = Image.fromarray(rgba_matrix)
-
-    # Save the image
-    image.save(filename)"""
 
 
+#generate the 3 images together
 def generate_merged_images(image_matrix_lists,merged_image_name,tmp_folder="MiDaS/tmp_images"):
     tmp_cont=0
     for image in image_matrix_lists:

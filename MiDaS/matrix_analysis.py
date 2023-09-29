@@ -28,10 +28,10 @@ def remove_extra_columns(matrix, multiple):
     else:
         return matrix
     
-#keep the indicated percet
+#keep the indicated percentage of the matrix
 def select_center_rows(matrix, percentage):
     if percentage < 0 or percentage > 100:
-        raise ValueError("El porcentaje debe estar entre 0 y 100.")
+        raise ValueError("Percentage has to be between 0 and 100.")
     
     num_rows = matrix.shape[0]
     num_center_rows = int(num_rows * (percentage / 100))
@@ -42,7 +42,6 @@ def select_center_rows(matrix, percentage):
 
 #divide the matrix in submatrices, do the sum of values, and return y,x coordinates of the first element
 #of the matrix with the lower sum
-
 def find_min_sum_submatrix(matrix, N):
     rows, cols = matrix.shape
     num_submatrices_rows = rows // N
@@ -62,8 +61,8 @@ def find_min_sum_submatrix(matrix, N):
     
     return min_row, min_col
 
-"""takes a binary array and a desired minimum size for the areas, 
-and returns a list of coordinates of the first element of each contiguous area that meets the minimum size. """
+#takes a binary array and a desired minimum size for the areas, 
+#and returns a list of coordinates of the first element of each contiguous area that meets the minimum size. 
 def get_first_element_coordinates(binary_matrix, min_size):
     labeled_components, num_components = ndimage.label(binary_matrix)
     component_sizes = np.bincount(labeled_components.ravel())[1:]
@@ -77,8 +76,8 @@ def get_first_element_coordinates(binary_matrix, min_size):
     
     return first_element_coordinates
 
-"""calculates the row index of the middle horizontal element by averaging 
-the minimum and maximum row indices of the area"""
+#calculates the row index of the middle horizontal element by averaging 
+#the minimum and maximum row indices of the area
 
 def get_middle_horizontal_coordinates(binary_matrix, min_size):
     #ignore areas of small size

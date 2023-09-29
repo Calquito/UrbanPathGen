@@ -1,25 +1,19 @@
-from matrix_analysis import *
+from matrix_analysis import get_middle_horizontal_coordinates
 
 
-def choose_angle(depth_area,image_percentage,submatrices,vision_field_degrees):
+def choose_angle(depth_area,submatrices,drone):
 
-    #adjusted_matrix=remove_extra_columns(depth_area,submatrices)
-
-    #start_row to sum it in case of needing the y coordinate
-    bounded_matrix, start_row = select_center_rows(depth_area,image_percentage)
-
-    #submatrix NxN dimension
-    submatrix_dimension=bounded_matrix.shape[1]//submatrices
-
-    center_x = depth_area.shape[1] // 2
-    center_y = depth_area.shape[0] // 2
+    #calculate the center of the 
+    center_x = drone.resolution_x // 2
+    center_y = drone.resolution_y // 2
 
     # Define the minimum size desired for the areas
-    min_size = bounded_matrix.size//submatrices
+    min_size = depth_area.size//submatrices
 
     # Get coordinates of the first element of all contiguous areas
-    middle_horizontal_coordinates = get_middle_horizontal_coordinates(bounded_matrix, min_size)
+    middle_horizontal_coordinates = get_middle_horizontal_coordinates(depth_area, min_size)
     
+    #list of angles, and if they are in front of the camera
     angles = []
     areas_in_front_of_camera = []
 
@@ -27,16 +21,20 @@ def choose_angle(depth_area,image_percentage,submatrices,vision_field_degrees):
         #check if the area is directly in front of the camera
         #tuple with (direction,pixels distance from y coordinate of the center of the image to the
         # y coordinate of the center of the area)
-        if(int(bounded_matrix[center_y][coordinate[1]])==1):
+        if(int(depth_area[center_y][coordinate[1]])==1):
             areas_in_front_of_camera.append(('in front of',0))
         elif(coordinate[0]<center_y):
             areas_in_front_of_camera.append(('up',center_y-coordinate[0]))
         else:
             areas_in_front_of_camera.append('down',coordinate[0]-center_y)
 
+        #calculate distance from the coordinate to the center of the image
         distance = coordinate[1] - center_x 
-        angle=(distance/depth_area.shape[1])*vision_field_degrees
+
+        #calculate the angle to take in the x axis (if the route is taken depends on if the route is in front of the dron)
+        angle=(distance/depth_area.shape[1])*drone.field_of_view_x
+
         angles.append(angle)
 
-    return angles, bounded_matrix, areas_in_front_of_camera
+    return angles, depth_area, areas_in_front_of_camera
 

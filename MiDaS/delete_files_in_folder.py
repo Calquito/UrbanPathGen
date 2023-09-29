@@ -1,5 +1,6 @@
 import os
 
+#used to delete temporal images
 def delete_files_in_folder(folder_path):
     try:
         # Get list of files in folder
