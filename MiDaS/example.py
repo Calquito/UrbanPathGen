@@ -1,6 +1,5 @@
 from UAV import UAV
-from math import sqrt, tan, pi
-
+from trajectory_generation import trajectory_generation
 
 #HARDWARE DEPENDENT###########################################
 
@@ -63,15 +62,21 @@ model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium infe
 min_vertical_height=1.0
 max_vertical_height=4.0
 
-# Create a list to store drones
-drones = []
 
-drones.append(UAV(0,0.5,max_speed,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/building.mp4','video'))
-drones.append(UAV(1,0.5,max_speed,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,0,'camera'))
-drones.append(UAV(2,0.5,max_speed,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/woods.mp4','video'))
-#drones.append(Drone(3,0.5,field_of_view,1.0,4.0,1.5,'MiDaS/test_video/woods.mp4','video'))
 
-num_drones=len(drones)
+
+
 
 
 ###############################################################
+
+drones = []
+drones.append(UAV(0,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/building.mp4','video'))
+drones.append(UAV(1,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,0,'camera'))
+drones.append(UAV(2,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/woods.mp4','video'))
+drones.append(UAV(3,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/building.mp4','video'))
+drones.append(UAV(4,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/building.mp4','video'))
+drones.append(UAV(5,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'MiDaS/test_video/building.mp4','video'))
+
+
+trajectory_generation(drones,interval_seconds,take_screenshots,dron_to_show,model_type,show_video,threshold_fraction,submatrices,between_frame_sleep_time)

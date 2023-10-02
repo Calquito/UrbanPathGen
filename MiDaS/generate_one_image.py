@@ -2,7 +2,7 @@ from complete_analysis import complete_analysis
 from generate_images import generate_merged_images
 import numpy as np
 from PIL import Image
-from initialize_variables import *
+from MiDaS.example import *
 from load_model import load_model
 import cv2
 

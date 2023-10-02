@@ -1,6 +1,4 @@
 from complete_analysis import complete_analysis
-from initialize_variables import *
-from load_model import load_model
 import time
 import cv2
 import threading
@@ -20,10 +18,7 @@ def show_current_frame_in_video(frames_list):
 
 
 #capture the images for the analysis 
-def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_time,interval_seconds,take_screenshots,dron_to_show):
-    #load de MiDaS model to be used
-    transform,device,midas=load_model(model_type)
-    
+def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_time,interval_seconds,take_screenshots,dron_to_show,model_type,show_video,threshold_fraction,submatrices,between_frame_sleep_time,transform,device,midas):        
     #capture video
     cap = cv2.VideoCapture(drone.video_source)
     frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
@@ -43,7 +38,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
     screenshot_counter=0
 
     #dekay time between frames, so video doesn't go to fast
-    between_frame_sleep_time_with_video=between_frame_sleep_time_with_video
+    between_frame_sleep_time_with_video=0.01
     
     #select option depending on show_video, take_screenshots and the dron whose process show the video
     #OPTIONS ARE SIMILAR BUT NOT EQUAL, SO REPEATED CHARACTERISTICS ARE DEFINED ONCE 

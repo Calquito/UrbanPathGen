@@ -26,7 +26,7 @@ def choose_angle(depth_area,submatrices,drone):
         elif(coordinate[0]<center_y):
             areas_in_front_of_camera.append(('up',center_y-coordinate[0]))
         else:
-            areas_in_front_of_camera.append('down',coordinate[0]-center_y)
+            areas_in_front_of_camera.append(('down',coordinate[0]-center_y))
 
         #calculate distance from the coordinate to the center of the image
         distance = coordinate[1] - center_x 
@@ -36,5 +36,5 @@ def choose_angle(depth_area,submatrices,drone):
 
         angles.append(angle)
 
-    return angles, depth_area, areas_in_front_of_camera
+    return angles, areas_in_front_of_camera
 

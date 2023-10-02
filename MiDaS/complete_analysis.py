@@ -30,7 +30,7 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,subm
     # Apply threshold
     depth_area = np.array((depth_tensor < threshold).float())
 
-    angles, bounded_matrix, areas_in_front_of_camera = choose_angle(depth_area,submatrices,drone)
+    angles, areas_in_front_of_camera = choose_angle(depth_area,submatrices,drone)
 
     #print("There are "+str(len(angles))+" posible routes, in the directions "+ str(angles))
 
@@ -77,6 +77,6 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,subm
     execution_time = end_time - start_time
     print(f"Execution time: {execution_time:.6f} seconds")
 
-    return depth_area, depth_estimation_matrix,bounded_matrix
+    return depth_area, depth_estimation_matrix,depth_area
 
     
