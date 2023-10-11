@@ -52,6 +52,8 @@ drones.append(UAV(0,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_
 drones.append(UAV(1,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,0,'camera'))
 drones.append(UAV(2,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'Trajectory Generation/test_videos/woods.mp4','video'))
 drones.append(UAV(3,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'Trajectory Generation/test_videos/building.mp4','video'))
+drones.append(UAV(4,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'Trajectory Generation/test_videos/building.mp4','video'))
+drones.append(UAV(5,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'Trajectory Generation/test_videos/building.mp4','video'))
 
 
 #Call trajectory_generation

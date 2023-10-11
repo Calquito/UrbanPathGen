@@ -1,10 +1,4 @@
-Drone 1 is reading camera and not taking screenshots
-Drone 0 is reading video and not taking screenshots
-Drone 2 is reading video and not taking screenshots
-Drone 3 is reading video and not taking screenshots
-Inference time: 1.107115 seconds
-Dron 0 turning towards right
-Inference time: 1.371151 seconds
+
 Dron 1 turning towards -15.089062499999999
 Inference time: 0.080197 seconds
 Dron 1 turning towards -1.2234375

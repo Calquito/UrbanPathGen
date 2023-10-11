@@ -2,6 +2,8 @@ from complete_analysis import complete_analysis
 import time
 import cv2
 import threading
+import keyboard
+
 
 
 #show video using cv2. Can slow the program
@@ -18,7 +20,8 @@ def show_current_frame_in_video(frames_list):
 
 
 #capture the images for the analysis 
-def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_time,interval_seconds,take_screenshots,dron_to_show,show_video,threshold_fraction,transform,device,midas,accuracy):        
+def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_time,interval_seconds,take_screenshots,dron_to_show,show_video,threshold_fraction,transform,device,midas,accuracy,stop_event):        
+    
     #capture video
     cap = cv2.VideoCapture(drone.video_source)
     frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
@@ -42,7 +45,6 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
     screenshot_counter=0
 
-
     #dekay time between frames, so video doesn't go to fast
     between_frame_sleep_time_with_video=0.01
     
@@ -52,7 +54,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         #displays the option
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and taking screenshots")
         #reads the video while exists (the process)
-        while True:
+        while not stop_event.is_set():
             #read the frame and add it to the list of shared frames
             success, frame = cap.read()
             frames_list[drone.id]=frame
@@ -87,7 +89,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
     elif(show_video and take_screenshots and not drone.id==dron_to_show):
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and taking screenshots")
          #reads the video
-        while True:
+        while not stop_event.is_set():
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -115,7 +117,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
     elif(show_video and not take_screenshots and drone.id==dron_to_show):
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and not taking screenshots")
          #reads the video
-        while True:
+        while not stop_event.is_set():
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -142,7 +144,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
     elif(show_video and not take_screenshots and not drone.id==dron_to_show):
         print("Drone "+str(drone.id)+" is displaying video type "+drone.video_type+" and not taking screenshots")
          #reads the video
-        while True:
+        while not stop_event.is_set():
             success, frame = cap.read()
             frames_list[drone.id]=frame
             
@@ -166,7 +168,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
     elif(drone.video_type=='video' and take_screenshots):
         print("Drone "+str(drone.id)+" is reading video"+" and taking screenshots")
-        while True:
+        while not stop_event.is_set():
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(screenshot_counter*interval_seconds * frame_rate))
             success, frame = cap.read()
             
@@ -193,7 +195,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
     elif(drone.video_type=='video' and not take_screenshots):
         print("Drone "+str(drone.id)+" is reading video"+" and not taking screenshots")
-        while True:
+        while not stop_event.is_set():
             cap.set(cv2.CAP_PROP_POS_FRAMES, int(screenshot_counter*interval_seconds * frame_rate))
             success, frame = cap.read()
             
@@ -218,7 +220,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
 
     elif(drone.video_type=='camera' and  take_screenshots):
         print("Drone "+str(drone.id)+" is reading camera"+" and taking screenshots")
-        while True:
+        while not stop_event.is_set():
             success, frame = cap.read()
             
             if success:
@@ -241,7 +243,7 @@ def capture_and_analyze_video(drone,frames_list,num_drones,before_cicle_sleep_ti
         cv2.destroyAllWindows()
     else:
         print("Drone "+str(drone.id)+" is reading camera"+" and not taking screenshots")
-        while True:
+        while not stop_event.is_set():
             success, frame = cap.read()
             
             if success:

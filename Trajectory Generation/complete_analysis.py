@@ -21,6 +21,10 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,subm
     #get depth_estimation_matrix
     depth_estimation_matrix=estimate_depth(image,transform,device,midas)
 
+    #in case the depth estimation fails, just ignore it and wait for the next iteration
+    if(depth_estimation_matrix==[]):
+        return [],[]
+
     # Convert numpy matrix to PyTorch tensor
     depth_tensor = torch.tensor(depth_estimation_matrix, dtype=torch.float32)
 
@@ -75,8 +79,8 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,subm
     #estimate the time that the analysis take (ideally lower than the interval of capture)
     end_time = time.time()
     execution_time = end_time - start_time
-    print(f"Execution time: {execution_time:.6f} seconds")
+    #print(f"Execution time: {execution_time:.6f} seconds")
 
-    return depth_area, depth_estimation_matrix,depth_area
+    return depth_area, depth_estimation_matrix
 
     

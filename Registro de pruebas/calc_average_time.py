@@ -3,7 +3,7 @@ import re
 # Función para calcular el promedio de los segundos
 def calcular_promedio(texto):
     # Buscar todas las coincidencias en el texto usando una expresión regular
-    resultados = re.findall(r'Inference time: (\d+\.\d+) seconds', texto)
+    resultados = re.findall(r'Execution time: (\d+\.\d+) seconds', texto)
     
     # Convertir los resultados a números flotantes y calcular el promedio
     if resultados:
@@ -14,158 +14,351 @@ def calcular_promedio(texto):
         return 0.0  # Si no se encuentra ninguna coincidencia, el promedio es 0.0
 
 # Ejemplo de uso
-texto = """
-Inference time: 0.804009 seconds
-Dron 0 turning towards right
-Inference time: 1.446713 seconds
-Dron 1 turning towards 27.3234375
-Inference time: 0.116121 seconds
-Dron 1 turning towards 13.321875
-Inference time: 0.518062 seconds
-Dron 2 turning towards right
-Inference time: 0.699093 seconds
-Dron 3 turning towards left
-Inference time: 0.337250 seconds
-Dron 0 turning towards right
-Inference time: 0.072318 seconds
-Dron 2 turning towards right
-Inference time: 0.085681 seconds
-Dron 3 turning towards left
-Inference time: 0.109866 seconds
-Dron 1 turning towards 28.818749999999998
-Inference time: 0.321337 seconds
+texto = """Dron 0 moving towards right
+Execution time: 0.334330 seconds
+Dron 2 moving towards right
+Execution time: 0.346115 seconds
+Dron 5 moving towards left
+Execution time: 0.341311 seconds
+Dron 3 moving towards left
+Execution time: 0.357724 seconds
+Dron 4 moving towards right
+Execution time: 0.355763 seconds
+Dron 1 moving towards left
+Execution time: 0.137666 seconds
+Current dron height: 1.1589658588368401
+Execution time: 0.092296 seconds
+Current dron height: 1.1589658588368401
+Execution time: 0.136524 seconds
+Dron 2 moving towards right
+Execution time: 0.231533 seconds
+Current dron height: 1.1589658588368401
+Execution time: 0.251870 seconds
+Current dron height: 1.1589658588368401
+Execution time: 0.272434 seconds
+Dron 1 moving towards left
+Execution time: 0.156900 seconds
+Dron 0 turning towards 61.063380281690144
+Execution time: 0.153931 seconds
+Dron 3 turning towards 40.13028169014085
+Execution time: 0.304413 seconds
+Dron 2 turning towards 26.34507042253521
+Execution time: 0.364566 seconds
+Dron 5 turning towards 61.063380281690144
+Execution time: 0.359581 seconds
+Dron 4 turning towards 61.063380281690144
+Execution time: 0.385255 seconds
+Dron 1 moving towards left
+Execution time: 0.343104 seconds
+Dron 0 turning towards 42.683098591549296
+Execution time: 0.186393 seconds
+Dron 3 turning towards 42.683098591549296
+Execution time: 0.235804 seconds
+Dron 1 moving towards left
+Execution time: 0.439182 seconds
+Dron 2 moving towards right
+Execution time: 0.372588 seconds
+Dron 4 turning towards 42.683098591549296
+Execution time: 0.429308 seconds
+Dron 5 turning towards 42.683098591549296
+Execution time: 0.560494 seconds
+Dron 0 turning towards 53.81338028169014
+Execution time: 0.130813 seconds
+Dron 1 moving towards left
+Execution time: 0.200673 seconds
+Dron 3 turning towards 53.91549295774647
+Execution time: 0.229463 seconds
+Dron 2 moving towards right
+Execution time: 0.242663 seconds
+Dron 4 turning towards 53.81338028169014
+Execution time: 0.292790 seconds
+Dron 5 turning towards 53.81338028169014
+Execution time: 0.329742 seconds
+Dron 0 turning towards 30.02112676056338
+Execution time: 0.144477 seconds
+Dron 1 moving towards left
+Execution time: 0.193300 seconds
+Dron 3 turning towards 30.02112676056338
+Execution time: 0.204345 seconds
+Dron 2 turning towards 47.176056338028175
+Execution time: 0.272145 seconds
+Dron 4 turning towards 30.02112676056338
+Execution time: 0.370347 seconds
+Dron 5 turning towards 30.02112676056338
+Execution time: 0.432182 seconds
+Dron 1 moving towards left
+Execution time: 0.078375 seconds
+Dron 0 turning towards 45.235915492957744
+Execution time: 0.153022 seconds
+Dron 3 turning towards 45.235915492957744
+Execution time: 0.246420 seconds
+Dron 2 moving towards right
+Execution time: 0.156324 seconds
+Dron 4 turning towards 45.95070422535211
+Execution time: 0.232275 seconds
+Dron 5 turning towards 45.235915492957744
+Execution time: 0.268026 seconds
+Dron 1 moving towards left
+Execution time: 0.081327 seconds
+Dron 3 turning towards 11.33450704225352
+Execution time: 0.142577 seconds
+Dron 0 turning towards 11.33450704225352
+Execution time: 0.129941 seconds
+Dron 4 turning towards 11.33450704225352
+Execution time: 0.138334 seconds
+Dron 5 turning towards 11.33450704225352
+Execution time: 0.149081 seconds
+Dron 2 turning towards 38.70070422535211
+Execution time: 0.227924 seconds
+Dron 1 moving towards left
+Execution time: 0.100944 seconds
+Dron 3 turning towards -2.348591549295775
+Execution time: 0.112045 seconds
+Dron 0 turning towards -2.348591549295775
+Execution time: 0.157811 seconds
+Dron 4 turning towards -2.348591549295775
+Execution time: 0.137260 seconds
+Dron 5 turning towards -2.348591549295775
+Execution time: 0.175729 seconds
+Dron 2 turning towards 21.954225352112672
+Execution time: 0.160886 seconds
+Dron 1 moving towards left
+Execution time: 0.102701 seconds
+Dron 3 turning towards 2.246478873239437
+Execution time: 0.125934 seconds
+Dron 0 turning towards 2.246478873239437
+Execution time: 0.159805 seconds
+Dron 4 turning towards 2.246478873239437
+Execution time: 0.126671 seconds
+Dron 5 turning towards 2.246478873239437
+Execution time: 0.142861 seconds
+Current dron height: 1.7402066559497038
+Execution time: 0.090861 seconds
+Dron 1 turning towards -15.9046875
+Execution time: 0.103114 seconds
+Dron 3 turning towards -0.8169014084507042
+Execution time: 0.099913 seconds
 Dron 0 turning towards -0.8169014084507042
-Inference time: 0.073886 seconds
-Dron 2 turning towards 37.271126760563384
-Inference time: 0.161347 seconds
-Inference time: 0.178329 seconds
-Dron 3 turning towards 37.271126760563384
-Dron 1 turning towards 31.4015625
-Inference time: 0.281231 seconds
-Dron 0 turning towards 33.901408450704224
-Inference time: 0.150017 seconds
-Inference time: 0.122131 seconds
-Dron 1 turning towards 25.1484375
-Dron 2 turning towards -1.2253521126760563
-Inference time: 0.148799 seconds
-Dron 3 turning towards -1.2253521126760563
-Inference time: 0.379541 seconds
-Dron 0 turning towards 15.52112676056338
-Inference time: 0.098006 seconds
-Dron 1 turning towards 17.8078125
-Inference time: 0.096068 seconds
-Dron 2 turning towards 3.676056338028169
-Inference time: 0.180959 seconds
-Dron 3 turning towards 3.676056338028169
-Inference time: 0.376594 seconds
-Dron 0 turning towards 26.651408450704224
-Inference time: 0.097510 seconds
-Dron 1 turning towards 23.925
-Inference time: 0.161480 seconds
-Dron 2 turning towards 2.859154929577465
-Inference time: 0.402675 seconds
-Dron 0 turning towards 2.859154929577465
-Inference time: 0.077722 seconds
-Dron 3 turning towards 2.859154929577465
-Inference time: 0.103594 seconds
-Dron 1 turning towards 18.3515625
-Inference time: 0.155893 seconds
-Inference time: 0.327417 seconds
-Dron 2 turning towards 16.746478873239436
-Dron 0 turning towards 18.073943661971832
-Inference time: 0.075131 seconds
-Dron 3 turning towards 16.746478873239436
-Inference time: 0.114093 seconds
-Dron 1 turning towards 16.720312500000002
-Inference time: 0.385795 seconds
-Dron 0 turning towards -15.827464788732394
-Inference time: 0.165962 seconds
-Dron 2 turning towards right
-Inference time: 0.190452 seconds
-Inference time: 0.154153 seconds
-Dron 3 turning towards left
-Dron 1 turning towards 30.45
-Inference time: 0.322513 seconds
-Dron 0 turning towards -29.510563380281692
-Inference time: 0.146929 seconds
-Dron 1 turning towards 16.720312500000002
-Inference time: 0.082810 seconds
-Dron 2 turning towards 11.538732394366198
-Inference time: 0.082702 seconds
-Dron 3 turning towards 11.538732394366198
-Inference time: 0.228139 seconds
-Dron 1 turning towards 20.662499999999998
-Inference time: 0.418702 seconds
-Dron 0 turning towards -24.91549295774648
-Inference time: 0.080638 seconds
-Dron 2 turning towards -5.207746478873239
-Inference time: 0.080514 seconds
-Dron 3 turning towards 33.390845070422536
-Inference time: 0.250074 seconds
-Dron 1 turning towards 21.342187499999998
-Inference time: 0.367227 seconds
-Dron 0 turning towards -27.978873239436616
-Inference time: 0.073940 seconds
-Dron 2 turning towards 0.6126760563380281
-Inference time: 0.066683 seconds
-Dron 3 turning towards 0.6126760563380281
-Inference time: 0.237311 seconds
-Dron 1 turning towards 23.653125
-Inference time: 0.424946 seconds
-Dron 0 turning towards -35.33098591549295
-Inference time: 0.068191 seconds
-Dron 2 turning towards -14.193661971830986
-Inference time: 0.084176 seconds
-Dron 3 turning towards 24.7112676056338
-Inference time: 0.108011 seconds
-Dron 1 turning towards 19.575
-Inference time: 0.308019 seconds
-Dron 0 turning towards right
-Inference time: 0.069541 seconds
-Dron 2 turning towards -18.176056338028168
-Inference time: 0.072238 seconds
-Dron 3 turning towards 20.626760563380284
-Inference time: 0.098826 seconds
-Dron 1 turning towards 19.7109375
-Inference time: 0.336402 seconds
-Dron 0 turning towards right
-Inference time: 0.072680 seconds
-Dron 2 turning towards 34.00352112676056
-Inference time: 0.143813 seconds
-Inference time: 0.156279 seconds
-Dron 3 turning towards -18.992957746478872
-Dron 1 turning towards 16.1765625
-Inference time: 0.286458 seconds
-Dron 0 turning towards -13.683098591549296
-Inference time: 0.150125 seconds
-Inference time: 0.145393 seconds
-Dron 1 turning towards 15.496875000000001
-Dron 2 turning towards -30.327464788732392
-Inference time: 0.076976 seconds
-Dron 3 turning towards 12.45774647887324
-Inference time: 0.334157 seconds
-Dron 0 turning towards -27.570422535211268
-Inference time: 0.099009 seconds
-Dron 1 turning towards 12.098437500000001
-Inference time: 0.072868 seconds
-Dron 2 turning towards right
-Inference time: 0.158833 seconds
-Dron 3 turning towards left
-Inference time: 0.339583 seconds
-Dron 0 turning towards 2.9612676056338025
-Inference time: 0.095667 seconds
-Dron 1 turning towards 14.0015625
-Inference time: 0.071251 seconds
-Dron 2 turning towards right
-Inference time: 0.194833 seconds
-Dron 3 turning towards left
-Inference time: 0.394969 seconds
-Dron 0 turning towards 1.2253521126760563
-Inference time: 0.103519 seconds
-Dron 1 turning towards 14.68125
-Inference time: 0.074113 seconds
-Dron 2 turning towards right
-"""
+Execution time: 0.111527 seconds
+Dron 4 turning towards -0.8169014084507042
+Execution time: 0.107901 seconds
+Dron 5 turning towards -0.8169014084507042
+Execution time: 0.132664 seconds
+Dron 1 moving towards left
+Execution time: 0.079501 seconds
+Dron 2 turning towards 12.968309859154928
+Execution time: 0.134037 seconds
+Dron 3 turning towards -8.169014084507042
+Execution time: 0.086767 seconds
+Dron 0 turning towards -8.169014084507042
+Execution time: 0.107268 seconds
+Dron 4 turning towards -8.169014084507042
+Execution time: 0.109749 seconds
+Dron 5 turning towards -8.169014084507042
+Execution time: 0.103165 seconds
+Dron 1 moving towards left
+Execution time: 0.096899 seconds
+Dron 2 turning towards 8.985915492957748
+Execution time: 0.127808 seconds
+Dron 3 moving towards left
+Execution time: 0.087260 seconds
+Dron 0 moving towards right
+Execution time: 0.092721 seconds
+Dron 4 moving towards right
+Execution time: 0.137206 seconds
+Dron 5 moving towards left
+Execution time: 0.095306 seconds
+Dron 1 moving towards left
+Execution time: 0.098053 seconds
+Dron 2 turning towards 61.16549295774648
+Execution time: 0.136059 seconds
+Dron 3 moving towards left
+Execution time: 0.086695 seconds
+Dron 0 moving towards right
+Execution time: 0.095903 seconds
+Dron 1 moving towards left
+Execution time: 0.147083 seconds
+Dron 4 moving towards right
+Execution time: 0.183635 seconds
+Dron 5 moving towards left
+Execution time: 0.203152 seconds
+Dron 2 turning towards -3.1654929577464785
+Execution time: 0.140700 seconds
+Dron 3 turning towards 13.478873239436618
+Execution time: 0.086101 seconds
+Dron 0 turning towards 13.478873239436618
+Execution time: 0.101430 seconds
+Dron 1 moving towards left
+Execution time: 0.097673 seconds
+Dron 4 turning towards 13.478873239436618
+Execution time: 0.101501 seconds
+Dron 2 moving towards right
+Execution time: 0.179673 seconds
+Dron 5 turning towards 16.235915492957748
+Execution time: 0.229851 seconds
+Dron 3 turning towards -0.4084507042253521
+Execution time: 0.100940 seconds
+Dron 1 moving towards left
+Execution time: 0.087464 seconds
+Dron 0 turning towards -0.4084507042253521
+Execution time: 0.151136 seconds
+Dron 4 turning towards -0.4084507042253521
+Execution time: 0.134660 seconds
+Dron 5 turning towards 0.4084507042253521
+Execution time: 0.178660 seconds
+Dron 2 moving towards right
+Execution time: 0.176177 seconds
+Dron 3 turning towards 30.12323943661972
+Execution time: 0.108753 seconds
+Dron 1 moving towards left
+Execution time: 0.082348 seconds
+Dron 0 turning towards 30.12323943661972
+Execution time: 0.142319 seconds
+Dron 4 turning towards 30.12323943661972
+Execution time: 0.121878 seconds
+Dron 5 turning towards 30.838028169014084
+Execution time: 0.154869 seconds
+Dron 2 moving towards right
+Execution time: 0.192231 seconds
+Dron 1 moving towards left
+Execution time: 0.113249 seconds
+Dron 3 turning towards 28.387323943661972
+Execution time: 0.273082 seconds
+Dron 0 turning towards 28.387323943661972
+Execution time: 0.131632 seconds
+Dron 5 turning towards 28.387323943661972
+Execution time: 0.189929 seconds
+Dron 4 turning towards 28.387323943661972
+Execution time: 0.264786 seconds
+Dron 2 moving towards right
+Execution time: 0.295683 seconds
+Dron 1 moving towards left
+Execution time: 0.099628 seconds
+Dron 3 moving towards left
+Execution time: 0.105444 seconds
+Dron 0 moving towards right
+Execution time: 0.108958 seconds
+Dron 5 moving towards left
+Execution time: 0.154916 seconds
+Dron 4 moving towards right
+Execution time: 0.168754 seconds
+Dron 2 turning towards 44.316901408450704
+Execution time: 0.132927 seconds
+Dron 1 moving towards left
+Execution time: 0.100631 seconds
+Dron 3 turning towards 62.08450704225352
+Execution time: 0.146351 seconds
+Dron 5 turning towards 62.08450704225352
+Execution time: 0.106943 seconds
+Dron 4 turning towards 62.08450704225352
+Execution time: 0.156153 seconds
+Dron 0 turning towards 62.08450704225352
+Execution time: 0.172674 seconds
+Dron 2 turning towards -2.5528169014084505
+Execution time: 0.194476 seconds
+Dron 1 moving towards left
+Execution time: 0.154247 seconds
+Dron 3 moving towards left
+Execution time: 0.099425 seconds
+Dron 5 moving towards left
+Execution time: 0.093235 seconds
+Dron 4 moving towards right
+Execution time: 0.159635 seconds
+Dron 0 moving towards right
+Execution time: 0.090885 seconds
+Dron 2 moving towards right
+Execution time: 0.123705 seconds
+Dron 1 moving towards left
+Execution time: 0.158629 seconds
+Dron 3 moving towards left
+Execution time: 0.088237 seconds
+Dron 5 moving towards left
+Execution time: 0.076951 seconds
+Dron 4 moving towards right
+Execution time: 0.102779 seconds
+Dron 0 moving towards right
+Execution time: 0.099927 seconds
+Dron 1 moving towards left
+Execution time: 0.112515 seconds
+Dron 2 moving towards right
+Execution time: 0.158682 seconds
+Dron 3 turning towards 56.774647887323944
+Execution time: 0.134635 seconds
+Dron 5 turning towards 56.774647887323944
+Execution time: 0.101992 seconds
+Dron 4 turning towards 56.774647887323944
+Execution time: 0.165351 seconds
+Dron 0 turning towards 58.0
+Execution time: 0.186547 seconds
+Dron 1 moving towards left
+Execution time: 0.158934 seconds
+Dron 2 turning towards 11.94718309859155
+Execution time: 0.269167 seconds
+Dron 3 turning towards 32.982394366197184
+Execution time: 0.122097 seconds
+Dron 5 turning towards 32.982394366197184
+Execution time: 0.113971 seconds
+Dron 1 moving towards left
+Execution time: 0.143814 seconds
+Dron 4 turning towards 32.982394366197184
+Execution time: 0.287025 seconds
+Dron 0 turning towards 32.982394366197184
+Execution time: 0.329264 seconds
+Current dron height: 1.9774477976284237
+Execution time: 0.200689 seconds
+Dron 3 turning towards 56.87676056338029
+Execution time: 0.203256 seconds
+Dron 5 turning towards 56.87676056338029
+Execution time: 0.151875 seconds
+Dron 1 moving towards left
+Execution time: 0.093512 seconds
+Dron 4 turning towards 56.87676056338029
+Execution time: 0.196859 seconds
+Dron 0 turning towards 58.91901408450704
+Execution time: 0.199340 seconds
+Current dron height: 2.2384130534750155
+Execution time: 0.261121 seconds
+Dron 3 moving towards left
+Execution time: 0.175826 seconds
+Dron 5 moving towards left
+Execution time: 0.175090 seconds
+Dron 1 moving towards left
+Execution time: 0.206374 seconds
+Dron 4 moving towards right
+Execution time: 0.167449 seconds
+Dron 0 moving towards right
+Execution time: 0.246547 seconds
+Current dron height: 2.4934472807796393
+Execution time: 0.266649 seconds
+Dron 3 moving towards left
+Execution time: 0.191226 seconds
+Dron 1 moving towards left
+Execution time: 0.088828 seconds
+Dron 5 moving towards left
+Execution time: 0.090124 seconds
+Dron 4 moving towards right
+Execution time: 0.080232 seconds
+Dron 0 moving towards right
+Execution time: 0.166400 seconds
+Dron 2 moving towards right
+Execution time: 0.175347 seconds
+Dron 3 moving towards left
+Execution time: 0.103532 seconds
+Dron 1 moving towards left
+Execution time: 0.109299 seconds
+Dron 5 moving towards left
+Execution time: 0.089759 seconds
+Dron 4 moving towards right
+Execution time: 0.080862 seconds
+Dron 2 moving towards right
+Execution time: 0.114433 seconds
+Dron 0 moving towards right
+Execution time: 0.164754 seconds
+Dron 1 moving towards left
+Execution time: 0.167347 seconds
+Dron 3 moving towards left
+Execution time: 0.154691 seconds """
+
 
 promedio = calcular_promedio(texto)
 print(f"El promedio de los segundos es: {promedio:.6f}")

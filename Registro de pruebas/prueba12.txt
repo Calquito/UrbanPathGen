@@ -1,0 +1,266 @@
+
+Execution time: 0.149159 seconds
+Dron 3 moving towards left
+Execution time: 0.213851 seconds
+Dron 2 moving towards right     
+Execution time: 0.216843 seconds
+Dron 0 moving towards right     
+Execution time: 0.216843 seconds
+Dron 1 turning towards 19.982812499999998
+Execution time: 0.140258 seconds
+Dron 2 turning towards 64.4330985915493
+Execution time: 0.091959 seconds
+Current dron height: 1.1589658588368401
+Execution time: 0.150504 seconds
+Current dron height: 1.1589658588368401
+Execution time: 0.169432 seconds
+Dron 1 turning towards 19.575
+Execution time: 0.139884 seconds
+Dron 2 turning towards 25.936619718309856
+Execution time: 0.110598 seconds
+Dron 3 turning towards 61.063380281690144
+Execution time: 0.109379 seconds
+Dron 0 turning towards 61.063380281690144
+Execution time: 0.154776 seconds
+Dron 1 turning towards 19.7109375
+Execution time: 0.116988 seconds
+Dron 2 turning towards 30.838028169014084
+Execution time: 0.080834 seconds
+Dron 3 turning towards 42.683098591549296
+Execution time: 0.115408 seconds
+Dron 0 turning towards 42.683098591549296
+Execution time: 0.202283 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.168462 seconds
+Dron 2 turning towards 30.02112676056338
+Execution time: 0.084752 seconds
+Dron 0 turning towards 53.81338028169014
+Execution time: 0.118194 seconds
+Dron 3 turning towards 53.30281690140845
+Execution time: 0.148062 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.233932 seconds
+Dron 2 turning towards 43.908450704225345
+Execution time: 0.085930 seconds
+Dron 0 turning towards 30.02112676056338
+Execution time: 0.176501 seconds
+Dron 1 turning towards 19.846875
+Execution time: 0.234743 seconds
+Dron 3 turning towards 30.02112676056338
+Execution time: 0.282293 seconds
+Dron 2 moving towards right
+Execution time: 0.076794 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.159505 seconds
+Dron 0 turning towards 45.235915492957744
+Execution time: 0.180456 seconds
+Dron 3 turning towards 45.235915492957744
+Execution time: 0.252272 seconds
+Dron 2 turning towards 35.53521126760563
+Execution time: 0.126862 seconds
+Dron 1 turning towards 20.390625
+Execution time: 0.240325 seconds
+Dron 3 turning towards 11.33450704225352
+Execution time: 0.204160 seconds
+Dron 0 turning towards 11.33450704225352
+Execution time: 0.133030 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.131648 seconds
+Dron 3 turning towards -2.348591549295775
+Execution time: 0.110987 seconds
+Dron 2 turning towards 21.954225352112672
+Execution time: 0.178525 seconds
+Dron 0 turning towards -2.348591549295775
+Execution time: 0.116530 seconds
+Dron 1 turning towards 16.4484375
+Execution time: 0.119948 seconds
+Dron 3 turning towards 2.246478873239437
+Execution time: 0.136199 seconds
+Current dron height: 1.7402066559497038
+Execution time: 0.108899 seconds
+Dron 0 turning towards 2.246478873239437
+Execution time: 0.095479 seconds
+Dron 1 turning towards 20.5265625
+Execution time: 0.136180 seconds
+Dron 3 turning towards -0.8169014084507042
+Execution time: 0.091610 seconds
+Dron 2 turning towards 12.968309859154928
+Execution time: 0.124486 seconds
+Dron 0 turning towards -0.8169014084507042
+Execution time: 0.146435 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.139628 seconds
+Dron 3 turning towards -8.169014084507042
+Execution time: 0.089929 seconds
+Dron 2 turning towards 8.985915492957748
+Execution time: 0.124978 seconds
+Dron 0 turning towards -8.169014084507042
+Execution time: 0.180121 seconds
+Dron 1 turning towards 20.5265625
+Execution time: 0.121720 seconds
+Dron 3 moving towards left
+Execution time: 0.074309 seconds
+Dron 2 turning towards 61.16549295774648
+Execution time: 0.099751 seconds
+Dron 0 moving towards right
+Execution time: 0.112002 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.172935 seconds
+Dron 3 moving towards left
+Execution time: 0.080466 seconds
+Dron 0 moving towards right
+Execution time: 0.079786 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.214647 seconds
+Dron 2 turning towards -3.1654929577464785
+Execution time: 0.325034 seconds
+Dron 3 turning towards 13.478873239436618
+Execution time: 0.084326 seconds
+Dron 0 turning towards 13.478873239436618
+Execution time: 0.121246 seconds
+Dron 1 turning towards 20.390625
+Execution time: 0.175303 seconds
+Dron 2 moving towards right
+Execution time: 0.083114 seconds
+Dron 3 turning towards -0.4084507042253521
+Execution time: 0.100640 seconds
+Dron 0 turning towards -0.4084507042253521
+Execution time: 0.134348 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.169382 seconds
+Dron 2 moving towards right
+Execution time: 0.081529 seconds
+Dron 3 turning towards 30.12323943661972
+Execution time: 0.113718 seconds
+Dron 0 turning towards 30.12323943661972
+Execution time: 0.145909 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.162023 seconds
+Dron 2 moving towards right
+Execution time: 0.081851 seconds
+Dron 3 turning towards 28.387323943661972
+Execution time: 0.118298 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.172776 seconds
+Dron 0 turning towards 28.387323943661972
+Execution time: 0.282131 seconds
+Dron 2 moving towards right
+Execution time: 0.068354 seconds
+Dron 3 moving towards left
+Execution time: 0.083616 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.187041 seconds
+Dron 0 moving towards right
+Execution time: 0.126331 seconds
+Dron 2 turning towards 44.316901408450704
+Execution time: 0.101383 seconds
+Dron 3 turning towards 62.08450704225352
+Execution time: 0.111701 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.215999 seconds
+Dron 0 turning towards 62.08450704225352
+Execution time: 0.133095 seconds
+Dron 2 turning towards -2.5528169014084505
+Execution time: 0.116688 seconds
+Dron 1 turning towards 20.662499999999998
+Execution time: 0.209769 seconds
+Dron 3 moving towards left
+Execution time: 0.209807 seconds
+Dron 0 moving towards right
+Execution time: 0.085059 seconds
+Current dron height: 1.9744822833574398
+Execution time: 0.073907 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.138962 seconds
+Dron 3 moving towards left
+Execution time: 0.084519 seconds
+Dron 0 moving towards right
+Execution time: 0.076289 seconds
+Dron 2 moving towards right
+Execution time: 0.083096 seconds
+Dron 1 turning towards 19.982812499999998
+Execution time: 0.156423 seconds
+Dron 3 turning towards 56.774647887323944
+Execution time: 0.116512 seconds
+Dron 0 turning towards 56.774647887323944
+Execution time: 0.116308 seconds
+Dron 2 turning towards 11.94718309859155
+Execution time: 0.106283 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.230810 seconds
+Dron 3 turning towards 32.982394366197184
+Execution time: 0.159351 seconds
+Dron 0 turning towards 32.982394366197184
+Execution time: 0.131304 seconds
+Dron 1 turning towards 19.575
+Execution time: 0.154799 seconds
+Current dron height: 2.2117234250361597
+Execution time: 0.171052 seconds
+Dron 3 turning towards 56.87676056338029
+Execution time: 0.123195 seconds
+Dron 0 turning towards 56.87676056338029
+Execution time: 0.131702 seconds
+Dron 1 turning towards 19.575
+Execution time: 0.208649 seconds
+Current dron height: 2.4726886808827517
+Execution time: 0.112175 seconds
+Dron 3 moving towards left
+Execution time: 0.150244 seconds
+Dron 0 moving towards right
+Execution time: 0.158557 seconds
+Dron 1 turning towards 19.846875
+Execution time: 0.159276 seconds
+Current dron height: 2.7277229081873755
+Execution time: 0.099659 seconds
+Dron 3 moving towards left
+Execution time: 0.092884 seconds
+Dron 0 moving towards right
+Execution time: 0.093176 seconds
+Dron 1 turning towards 20.118750000000002
+Execution time: 0.223420 seconds
+Dron 2 moving towards right
+Execution time: 0.081277 seconds
+Dron 3 moving towards left
+Execution time: 0.083149 seconds
+Dron 1 turning towards 27.595312500000002
+Execution time: 0.146775 seconds
+Dron 0 moving towards right
+Execution time: 0.105168 seconds
+Dron 2 moving towards right
+Execution time: 0.092921 seconds
+Dron 3 moving towards left
+Execution time: 0.078383 seconds
+Dron 1 turning towards 20.2546875
+Execution time: 0.193077 seconds
+Dron 0 moving towards right
+Execution time: 0.090393 seconds
+Dron 2 moving towards right
+Execution time: 0.090029 seconds
+Dron 1 turning towards 21.20625
+Execution time: 0.195135 seconds
+Dron 3 moving towards left
+Execution time: 0.210117 seconds
+Dron 0 moving towards right
+Execution time: 0.119148 seconds
+Dron 2 moving towards right
+Execution time: 0.084201 seconds
+Dron 1 turning towards 14.409374999999999
+Execution time: 0.143359 seconds
+Dron 3 moving towards left
+Execution time: 0.137185 seconds
+Dron 0 moving towards right
+Execution time: 0.094707 seconds
+Dron 2 moving towards right
+Execution time: 0.089458 seconds
+Dron 1 turning towards 18.759375000000002
+Execution time: 0.160815 seconds
+Dron 3 turning towards 42.58098591549296
+Execution time: 0.134372 seconds
+Dron 0 turning towards 42.58098591549296
+Execution time: 0.164682 seconds
+Dron 2 moving towards right
+Execution time: 0.100079 seconds
+Dron 1 turning towards 21.0703125
+Execution time: 0.219511 seconds
+Dron 0 turning towards 55.140845070422536
+Execution time: 0.103612 seconds

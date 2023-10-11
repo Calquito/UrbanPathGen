@@ -28,7 +28,7 @@ def estimate_depth(filename,transform,device,midas):
             output = prediction.cpu().numpy()
             break
         except Exception as e:
-            print("Error"+str(cont))
+            #print("Error"+str(cont))
             cont+=1
             output=[]
 

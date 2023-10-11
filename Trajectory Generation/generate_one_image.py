@@ -62,7 +62,7 @@ submatrices=drone.field_of_view_x//accuracy
 #TEST ONE IMAGE####################################################################################
 
 #path of the image
-filename='Trajectory Generation\\test_images\\forest.jpeg'
+filename='Trajectory Generation\\test_images\\city_door.jpg'
 image = cv2.imread(filename)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -71,7 +71,7 @@ transform,device,midas=load_model(model_type)
 
 
 #do the analyis
-depth_area, depth_estimation_matrix,bounded_matrix=complete_analysis(drone,image,transform,device,midas,threshold_fraction,submatrices,interval_seconds)
+depth_area, depth_estimation_matrix=complete_analysis(drone,image,transform,device,midas,threshold_fraction,submatrices,interval_seconds)
 
 #generate the results
 generate_merged_images([image,depth_estimation_matrix,depth_area],'Trajectory Generation/image_analysis/output.png')
