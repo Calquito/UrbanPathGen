@@ -2,20 +2,19 @@
 
 Bienvenido a la documentación de UrbanPathGen, una herramienta para generar trayectorias de drones en entornos urbanos.
 
-## Configuración y Uso
-
-En este capítulo se describe la puesta en marcha y utilización de UrbanPathGen.
-
 ### Instalación
 
 Para la instalación de UrbanPathGen, se deben seguir los siguientes pasos:
 
-1. Instalar Python junto con el instalador pip desde [Python](enlace a Python). Se debe corroborar que la versión instalada soporte PyTorch, esto se puede verificar desde [PyTorch](enlace a PyTorch). Para el desarrollo de UrbanPathGen, se utilizó Python 3.10.
-2. Clonar el repositorio de UrbanPathGen, el cual se puede encontrar en [UrbanPathGen](enlace a UrbanPathGen).
-3. Seguir las instrucciones de instalación de CUDA, detalladas en [CUDA](enlace a CUDA).
-4. Seguir las instrucciones de instalación de PyTorch, detalladas en [PyTorch](enlace a PyTorch).
+1. Instalar Python junto con el instalador pip desde [Python](https://www.python.org/downloads/). Se debe corroborar que la versión instalada soporte PyTorch, esto se puede verificar desde [PyTorch](https://pytorch.org/get-started/locally/). Para el desarrollo de UrbanPathGen, se utilizó Python 3.10.
+2. Clonar el repositorio de UrbanPathGen.
+3. Seguir las instrucciones de instalación de CUDA, detalladas en [CUDA](https://developer.nvidia.com/cuda-downloads).
+4. Seguir las instrucciones de instalación de PyTorch, detalladas en [PyTorch](https://pytorch.org/get-started/locally/).
 5. Instalar los paquetes necesarios para el programa. Para esto, se puede ejecutar el comando `pip install -r requirements.txt` desde la carpeta raíz de UrbanPathGen.
 6. Descargar el modelo de MiDaS a utilizar. Para esto, dirigirse a la carpeta `Trajectory Generation/torch_models` y ejecutar el script `force_refresh_model.py`. El modelo que viene configurado por defecto es `DPT_Hybrid`, sin embargo, se pueden seleccionar otros modelos disponibles, los cuales se pueden ver en el archivo `see_available_models.py`.
+
+### Manual de uso
+El archivo `Manual UrbanPathGen.pdf` contiene la descripción detallada del proyecto, descripción del funcionamiento, documentación del código, configuración y utilización.
 
 ### Estructura del Repositorio
 
