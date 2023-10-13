@@ -26,10 +26,15 @@ show_video=False
 resize_fraction=0.5
 
 #take screenshots of every frame that the dron captures
-take_screenshots=False
+take_screenshots=True
 
 #threshold of depth to be considered a route
 threshold_fraction=0.25
+
+#ANALYSIS##########################################################################################
+
+#Prints the time that every iteration takes
+print_analysis_time=True
 
 
 #MIDAS MODELS######################################################################################
@@ -57,4 +62,4 @@ drones.append(UAV(5,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_
 
 
 #Call trajectory_generation
-trajectory_generation(drones,interval_seconds,take_screenshots,model_type,show_video,threshold_fraction,accuracy)
+trajectory_generation(drones,interval_seconds,take_screenshots,model_type,show_video,threshold_fraction,accuracy,print_analysis_time)

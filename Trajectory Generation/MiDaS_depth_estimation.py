@@ -2,10 +2,10 @@ import torch
 
 
 #use MiDaS to estimate depth
-def estimate_depth(filename,transform,device,midas):
+def estimate_depth(image,transform,device,midas):
 
     #uses CUDA if available
-    input_batch = transform(filename).to(device)
+    input_batch = transform(image).to(device)
 
     #if the inference is not possible due to errors, return an empty matrix
 
@@ -20,7 +20,7 @@ def estimate_depth(filename,transform,device,midas):
                 prediction = midas(input_batch) 
                 prediction = torch.nn.functional.interpolate(
                     prediction.unsqueeze(1),
-                    size=filename.shape[:2],
+                    size=image.shape[:2],
                     mode="bicubic",
                     align_corners=False,
                 ).squeeze()

@@ -5,16 +5,9 @@ from load_model import load_model
 import keyboard
 
 
-def exit_program(threads):
-    print("Exiting the program. Please wait a couple of seconds \n")
-    # Wait for all threads to finish
-    for thread in threads:
-        thread.join()
-    print("Successful exit")
 
-def trajectory_generation(drones,interval_seconds,take_screenshots,model_type,show_video,threshold_fraction,accuracy):
+def trajectory_generation(drones,interval_seconds,take_screenshots,model_type,show_video,threshold_fraction,accuracy,print_analysis_time):
 
-    """sehvjhhhhhhhhhho"""
 
     #clean previous screenshtots
     delete_files_in_folder("Trajectory Generation/video_frames")
@@ -48,7 +41,7 @@ def trajectory_generation(drones,interval_seconds,take_screenshots,model_type,sh
     for drone in drones:
         stop_event = threading.Event()
         #create thread to capture image
-        thread = threading.Thread(target=capture_and_analyze_video, args=[drone,frames_list,num_drones,before_cicles_sleep_times[drone.id],interval_seconds,take_screenshots,dron_to_show,show_video,threshold_fraction,transform,device,midas,accuracy,stop_event])
+        thread = threading.Thread(target=capture_and_analyze_video, args=[drone,frames_list,num_drones,before_cicles_sleep_times[drone.id],interval_seconds,take_screenshots,dron_to_show,show_video,threshold_fraction,transform,device,midas,accuracy,stop_event,print_analysis_time])
         threads.append((thread, stop_event))
         thread.start()
         

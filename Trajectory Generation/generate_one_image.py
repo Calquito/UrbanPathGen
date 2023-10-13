@@ -62,8 +62,8 @@ submatrices=drone.field_of_view_x//accuracy
 #TEST ONE IMAGE####################################################################################
 
 #path of the image
-filename='Trajectory Generation\\test_images\\city_door.jpg'
-image = cv2.imread(filename)
+image_path='Trajectory Generation\\test_images\\city_door.jpg'
+image = cv2.imread(image_path)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 #load de MiDaS model to be used

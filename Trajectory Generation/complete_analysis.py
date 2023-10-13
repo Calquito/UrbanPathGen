@@ -15,7 +15,7 @@ def handle_no_routes(drone):
 
 
 #makes the analysis of the image (depth estimation and route calculation)
-def complete_analysis(drone,image,transform,device,midas,threshold_fraction,submatrices,interval_seconds):
+def complete_analysis(drone,image,transform,device,midas,threshold_fraction,submatrices,interval_seconds,print_analysis_time):
     start_time = time.time()
     
     #get depth_estimation_matrix
@@ -63,6 +63,15 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,subm
             #estimate the height to set to the dron based in the worse case scenario
             area_height_meters=wcs_height*(areas_in_front_of_camera[route_asigned_by_id][1]/(drone.resolution_y/2))
 
+            #in case the dron flies too high or too low (for example, the dron keeps its altitude but the surface has a slope)
+
+            if(drone.current_height>drone.max_height):
+                drone.set_flight_height(drone.max_height)
+            elif(drone.current_height<drone.min_height):
+                drone.set_flight_height(drone.min_height)
+            else:
+                pass
+
             #check that the dron stays within the limits
             if(areas_in_front_of_camera[route_asigned_by_id][0]=="up" and ((drone.current_height+area_height_meters)<=drone.max_height)):
                 drone.set_flight_height(drone.current_height+area_height_meters)
@@ -79,7 +88,9 @@ def complete_analysis(drone,image,transform,device,midas,threshold_fraction,subm
     #estimate the time that the analysis take (ideally lower than the interval of capture)
     end_time = time.time()
     execution_time = end_time - start_time
-    #print(f"Execution time: {execution_time:.6f} seconds")
+
+    if(print_analysis_time):
+        print(f"Execution time: {execution_time:.6f} seconds")
 
     return depth_area, depth_estimation_matrix
 
