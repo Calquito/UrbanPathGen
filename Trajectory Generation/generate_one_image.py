@@ -13,11 +13,11 @@ field_of_view_x=87 #AI-deck color camera module
 field_of_view_y=87 #AI-deck color camera module
 
 #turning accuracy degrees
-accuracy=5
+accuracy=4
 
 #resolution of the camera
-resolution_x=320
-resolution_y=320
+resolution_x=800
+resolution_y=533
 
 #VIDEO VARIABLES###################################################################################
 
@@ -53,16 +53,21 @@ max_vertical_height=4.0
 
 #create instances of drones
 
-drone=UAV(2,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'Trajectory Generation/test_video/woods.mp4','video')
+drone=UAV(1,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'Trajectory Generation/test_video/woods.mp4','video')
 
 
 #number of submatrices
 submatrices=drone.field_of_view_x//accuracy
 
+#ANALYSIS##########################################################################################
+
+#Prints the time that every iteration takes
+print_analysis_time=True
+
 #TEST ONE IMAGE####################################################################################
 
 #path of the image
-image_path='Trajectory Generation\\test_images\\city_door.jpg'
+image_path='Trajectory Generation\\test_images\\callejon.jpg'
 image = cv2.imread(image_path)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -71,7 +76,7 @@ transform,device,midas=load_model(model_type)
 
 
 #do the analyis
-depth_area, depth_estimation_matrix=complete_analysis(drone,image,transform,device,midas,threshold_fraction,submatrices,interval_seconds)
+depth_area, depth_estimation_matrix=complete_analysis(drone,image,transform,device,midas,threshold_fraction,submatrices,interval_seconds,print_analysis_time)
 
 #generate the results
 generate_merged_images([image,depth_estimation_matrix,depth_area],'Trajectory Generation/image_analysis/output.png')
