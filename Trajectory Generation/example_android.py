@@ -17,10 +17,10 @@ resolution_y=720
 #VIDEO VARIABLES###################################################################################
 
 #the frequency at which a frame is captured for analysis
-interval_seconds = 1
+interval_seconds = 10
 
 #shows video taken by the drones (power intensive, may crash the program)
-show_video=True
+show_video=False
 
 #take screenshots of every frame that the dron captures
 take_screenshots=True
@@ -45,12 +45,12 @@ model_type = "DPT_Hybrid"   # MiDaS v3 - Hybrid    (medium accuracy, medium infe
 #DRONES CONFIGURATION##############################################################################
 
 #min and max vertical height in mts
-min_vertical_height=0.5
-max_vertical_height=2.0
+min_vertical_height=1.0
+max_vertical_height=3.0
 
 #create instances of drones
 drones = []
-drones.append(UAV(0,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.5,resolution_x,resolution_y,'http://10.114.81.28:8080/video','camera'))
+drones.append(UAV(0,0.5,field_of_view_x,field_of_view_y,min_vertical_height,max_vertical_height,1.0,resolution_x,resolution_y,'http://192.168.50.148:8080/video','camera'))
 
 
 #Call trajectory_generation
