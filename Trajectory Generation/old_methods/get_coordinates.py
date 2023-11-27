@@ -20,14 +20,14 @@ def get_middle_horizontal_coordinates(binary_matrix, min_size):
     return middle_horizontal_coordinates
 
 # Create an example binary matrix with 1s and 0s to represent contiguous areas
-binary_matrix = np.array([[1, 1, 1, 1, 1, 1, 0, 1, 0],
-                           [1, 1, 0, 0, 0, 0, 0, 1, 0],
-                           [0, 1, 1, 1, 1, 0, 0, 0, 0],
-                           [0, 0, 0, 0, 0, 0, 0, 1, 0],
-                           [1, 0, 1, 0, 1, 1, 1, 0, 0],
-                           [0, 0, 1, 0, 0, 0, 1, 1, 0],
-                           [1, 0, 1, 0, 0, 0, 0, 0, 0],
-                           [1, 0, 1, 0, 0, 0, 0, 1, 0]])
+binary_matrix = np.array(np.array([[1, 1, 1, 1, 1, 1, 0, 1, 0],
+                                    [1, 0, 0, 0, 0, 0, 0, 1, 0],
+                                    [0, 1, 1, 1, 1, 0, 0, 0, 0],
+                                    [0, 0, 1, 0, 0, 0, 0, 1, 0],
+                                    [1, 0, 1, 0, 1, 0, 1, 0, 0],
+                                    [0, 0, 1, 0, 0, 0, 1, 1, 0],
+                                    [1, 0, 1, 1, 1, 1, 1, 1, 0],
+                                    [1, 0, 1, 0, 0, 0, 0, 1, 0]]))
 
 # Define the minimum size desired for the areas
 min_size = 3
